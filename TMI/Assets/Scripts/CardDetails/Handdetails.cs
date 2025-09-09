@@ -10,5 +10,8 @@ public class HAnd : MonoBehaviour
 
     private readonly List<CardDescriptions> cards = new();
 
-    public IEnumerator AddCard(CardDescriptions,)
+    public IEnumerator AddCard(CardDescriptions, cardView)
+    {
+
+    }
 }
