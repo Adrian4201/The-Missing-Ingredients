@@ -1,0 +1,21 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Data;
+using UnityEngine;
+
+public class Cards 
+{
+    public string Title => data.name;
+    public string Description => data.Description;
+
+    public int Mana {  get; private set; }
+
+    public Sprite Image => data.Image;
+
+    private readonly CardData data;
+    public Cards(CardData card)
+    {
+        data = card;
+        Mana = card.Mana;
+    }
+}
