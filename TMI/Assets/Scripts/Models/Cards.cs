@@ -7,10 +7,9 @@ public class Cards
 {
     public string Title => data.name;
     public string Description => data.Description;
+    public Sprite Image => data.Image;
 
     public int Mana {  get; private set; }
-
-    public Sprite Image => data.Image;
 
     private readonly CardData data;
     public Cards(CardData card)
