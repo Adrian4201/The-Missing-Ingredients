@@ -23,4 +23,17 @@ public class CardDescriptions : MonoBehaviour
         mana.text = card.Mana.ToString();
         imageS.sprite = card.Image;
     }
+    void OnMouseEnter()
+    {
+        wrapper.SetActive(false);
+        Vector3 pos = new(transform.position.x, -2);
+        HoverSystem.Instance.Show(Card, pos);  
+
+        
+    }
+    void OnMouseExit()
+    {
+        HoverSystem.Instance.Hide();
+        wrapper.SetActive(true);
+    }
 }
