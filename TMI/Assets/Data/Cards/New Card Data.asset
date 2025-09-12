@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Description>k__BackingField: 
   <Mana>k__BackingField: 0
-  <Image>k__BackingField: {fileID: 0}
+  <Image>k__BackingField: {fileID: 21300000, guid: c1fe3cf8b332a02489f8c8a05f262cae, type: 3}

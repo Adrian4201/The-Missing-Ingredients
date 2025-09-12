@@ -31,7 +31,7 @@ public class Handdetails : MonoBehaviour
             Vector3 up = spline.EvaluateUpVector(p);
             Quaternion rotation = Quaternion.LookRotation(forward - up, Vector3.Cross(-up, forward).normalized);
             cards[i].transform.DOMove(splineposition + transform.position + 0.01f * i * Vector3.back, duration);
-            cards[i].transform.DORotate(rotation.eulerAngles,duration);
+            cards[i].transform.DORotate(new Vector3(0, 0, rotation.eulerAngles.z), duration);
 
         }
         yield return new WaitForSeconds(duration);
