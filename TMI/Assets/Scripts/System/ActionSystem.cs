@@ -34,9 +34,40 @@ public class ActionSystem : Singleton<ActionSystem>
     private IEnumerator Flow(GameAction action, Action OnFlowFininshed = null) 
     {
         reaction = action.Prereaction;
-        
-    }
+        PerformSubscribers(action, preSubs);
+        yield return action;
 
+        reaction = action.PerformReaction;
+        yield return PerformPerformer(action);
+        yield return PerformReaction();
+    }
+    private IEnumerator PerformPerformer(GameAction action)
+    {
+        Type type = action.GetType();
+        if (Preformers.ContainsKey(type))
+        {
+            yield return Preformers[type] (action);
+        }
+
+    }
+    public IEnumerator PerformReaction()
+    {
+        foreach(var reaction in reaction)
+        {
+            yield return Flow(reaction);
+        }
+    }
+    private void PerformSubscribers(GameAction action, Dictionary<Type, List<Action<GameAction>>> Subs)
+    {
+        Type type = action.GetType();
+        if (Subs.ContainsKey(type))
+        {
+            foreach (var sub in Subs[type])
+            {
+                sub(action);
+            }
+        }
+    }
     
 
 }
