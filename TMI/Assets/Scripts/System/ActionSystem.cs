@@ -40,6 +40,12 @@ public class ActionSystem : Singleton<ActionSystem>
         reaction = action.PerformReaction;
         yield return PerformPerformer(action);
         yield return PerformReaction();
+
+        reaction = action.PostReaction;
+        PerformSubscribers(action, postSubs);
+        yield return PerformReaction();
+
+        OnFlowFininshed?.Invoke();
     }
     private IEnumerator PerformPerformer(GameAction action)
     {
