@@ -17,4 +17,10 @@ public class Cards
         data = card;
         Mana = card.Mana;
     }
+    void OnMouseDown()
+    {
+        if (ActionSystem.Instance.Isperforming) return;
+        DrawCardGA drawcard = new();
+        Destroy(gameObject);
+    }
 }
