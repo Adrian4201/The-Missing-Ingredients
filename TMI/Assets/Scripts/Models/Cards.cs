@@ -20,7 +20,7 @@ public class Cards
     void OnMouseDown()
     {
         if (ActionSystem.Instance.Isperforming) return;
-        DrawCardGA drawcard = new();
+        DrawCard drawcard = new();
         Destroy(gameObject);
     }
 }
