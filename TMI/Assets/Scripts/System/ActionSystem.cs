@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class ActionSystem : Singleton<ActionSystem>
 {
@@ -62,6 +63,27 @@ public class ActionSystem : Singleton<ActionSystem>
         {
             yield return Flow(reaction);
         }
+    }
+    public static void Attachperformmer<T>(Func<T, IEnumerator> Preformer) where T : GameAction
+    {
+        Type type = typeof(T);
+        IEnumerator wrappedperformer(GameAction action) => Preformer((T)action);
+        if( Preformers.ContainsKey(type)) Preformers[type] = wrappedperformer;
+        else Preformers.Add(type, wrappedperformer);
+    }
+    public static void Dettachperformer<T>() where T : GameAction
+    {
+        Type type =typeof(T);
+        if (Preformers.ContainsKey(type)) Preformers.Remove(type);
+    }
+    public static void SubscribeReaction<T>(Action<T> reaction, ReactionTiming timing) where T : GameAction
+    {
+
+    }
+
+    public static void UnSubscribeReaction<T>(Action<T> reaction, ReactionTiming timing) where T : GameAction
+    {
+
     }
     private void PerformSubscribers(GameAction action, Dictionary<Type, List<Action<GameAction>>> Subs)
     {
