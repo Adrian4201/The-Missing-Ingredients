@@ -78,13 +78,29 @@ public class ActionSystem : Singleton<ActionSystem>
     }
     public static void SubscribeReaction<T>(Action<T> reaction, ReactionTiming timing) where T : GameAction
     {
-
+        Dictionary<Type, List<Action<GameAction>>>subs = timing == ReactionTiming.PRE ? preSubs : postSubs;
+        void WrappedReaction(GameAction action) => reaction((T)action);
+        if (subs.ContainsKey(typeof(T)))
+        {
+            subs[typeof(T)].Add(WrappedReaction);
+        }
+        else 
+        {
+            subs.Add(typeof(T), new());
+            subs[typeof(T)].Add(WrappedReaction);
+        }
     }
 
     public static void UnSubscribeReaction<T>(Action<T> reaction, ReactionTiming timing) where T : GameAction
     {
-
-    }
+        Dictionary<Type, List<Action<GameAction>>> subs = timing == ReactionTiming.PRE ? preSubs : postSubs;
+        if (subs.ContainsKey(typeof(T)))
+        {
+            void wrappedReaction(GameAction action) => reaction((T)action);
+            subs[typeof(T)].Remove(wrappedReaction);
+            
+        }
+     }
     private void PerformSubscribers(GameAction action, Dictionary<Type, List<Action<GameAction>>> Subs)
     {
         Type type = action.GetType();
