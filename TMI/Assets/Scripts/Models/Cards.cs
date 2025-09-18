@@ -17,5 +17,7 @@ public class Cards
         data = card;
         Mana = card.Mana;
     }
+    
+  
   
 }

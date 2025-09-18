@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dealdamage : MonoBehaviour
+public class DrawCard : GameAction
 {
     // Start is called before the first frame update
-    public int Damage;
-    public Dealdamage(int damage)
+    void Start()
     {
-        Damage = damage;
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }

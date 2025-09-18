@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class TestSystem : MonoBehaviour
 {
     [SerializeField] private Handdetails handView;
     [SerializeField] private CardData cardData;
