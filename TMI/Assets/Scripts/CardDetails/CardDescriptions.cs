@@ -14,6 +14,7 @@ public class CardDescriptions : MonoBehaviour
     [SerializeField] private SpriteRenderer imageS;
 
     [SerializeField] private GameObject wrapper;
+    [SerializeField] private GameObject content;
     public Cards Card {  get; private set; }
     public void Setup(Cards card)
     {
