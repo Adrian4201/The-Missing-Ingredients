@@ -2,12 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestSystem : MonoBehaviour
+public class DiscardCardsGa : GameAction
 {
-    
-    [SerializeField] private List<CardData> Deckdata;
     // Start is called before the first frame update
     
-  
-
 }

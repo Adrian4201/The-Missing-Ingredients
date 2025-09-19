@@ -8,7 +8,7 @@ public class CardtoDraw : MonoBehaviour
     void OnMouseDown()
     {
         if (ActionSystem.Instance.Isperforming) return;
-        DrawCard draw = new();
+       DrawCard draw = new(1);
         ActionSystem.Instance.Preform(draw);
         Destroy(gameObject);
     }

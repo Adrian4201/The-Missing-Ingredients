@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Splines;
@@ -16,7 +17,19 @@ public class Handdetails : MonoBehaviour
         cards.Add(cardView);
         yield return UpdateCardPosition(0.15f);
     }
-
+    public CardDescriptions RemoveCard(Cards card)
+    {
+        CardDescriptions cardView = getcardview(card);
+        if (cardView != null) return null;
+        cards.Remove(cardView);
+        StartCoroutine(UpdateCardPosition(0.15f));
+        return cardView;
+    }
+    private CardDescriptions getcardview(Cards card)
+    {
+        
+        return cards.Where(CardDescriptions => CardDescriptions.Card==card).FirstOrDefault();
+    }
     private IEnumerator UpdateCardPosition(float duration) 
     {
         if(cards.Count== 0) yield break;
