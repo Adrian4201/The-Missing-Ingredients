@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class DrawCard : GameAction
 {
-    public int drawAmount{ get; set; }
+    public int Amount{ get; set; }
     public DrawCard(int drawamount)
     {
-        drawAmount = drawamount;
+       
+            Debug.Log("draw");
+            Amount = drawamount;
+
+        
     }
+    
 }

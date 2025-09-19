@@ -20,15 +20,15 @@ public class Handdetails : MonoBehaviour
     public CardDescriptions RemoveCard(Cards card)
     {
         CardDescriptions cardView = getcardview(card);
-        if (cardView != null) return null;
+        if (cardView == null) return null;
         cards.Remove(cardView);
         StartCoroutine(UpdateCardPosition(0.15f));
         return cardView;
     }
     private CardDescriptions getcardview(Cards card)
     {
-        
-        return cards.Where(CardDescriptions => CardDescriptions.Card==card).FirstOrDefault();
+        Debug.Log("found");
+        return cards.Where(cardView => cardView.Card ==card).FirstOrDefault();
     }
     private IEnumerator UpdateCardPosition(float duration) 
     {

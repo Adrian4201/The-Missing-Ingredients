@@ -5,33 +5,39 @@ using UnityEngine;
 
 public class CardSystem : Singleton<CardSystem>
 {
-    // Start is called before the first frame update
+    //Target methods
     [SerializeField] private Handdetails handdetails;
     [SerializeField] private Transform Drawpoint;
     [SerializeField] private Transform Discardpoint;
+    //list for deck
     private readonly List<Cards> drawpile = new();
     private readonly List<Cards> Discardpile = new();
     private readonly List<Cards> Hand = new();
     private void OnEnable()
     {
+
         ActionSystem.Attachperformmer<DrawCard>(DrawcardPerformer);
         ActionSystem.Attachperformmer<DiscardCardsGa>(Discardpreformer);
+        Debug.Log("We work");
         ActionSystem.SubscribeReaction<Enemyturn>(EnemyturnReact, ReactionTiming.PRE);
         ActionSystem.SubscribeReaction<Enemyturn>(EnemyturnReact, ReactionTiming.POST);
+        Debug.Log("So do wee!!!");
 
     }
     private void OnDisable()
     {
         ActionSystem.Dettachperformer<DrawCard>();
         ActionSystem.Dettachperformer<DiscardCardsGa>();
+        Debug.Log("we off");
         ActionSystem.UnSubscribeReaction<Enemyturn>(EnemyturnReact, ReactionTiming.PRE);
         ActionSystem.UnSubscribeReaction<Enemyturn>(EnemyturnReact, ReactionTiming.POST);
     }
     //setups
-    public void Setup(List<CardData> Deckdata)
+    public void Setup(List<CardData> deckData)
     {
-        foreach (var cardData in Deckdata)
+        foreach (var cardData in deckData)
         {
+            Debug.Log(cardData);
             Cards card = new(cardData);
             drawpile.Add(card);
         }
@@ -40,14 +46,16 @@ public class CardSystem : Singleton<CardSystem>
 
     private IEnumerator DrawcardPerformer(DrawCard drawperformer)
     {
-      int CardAmount = Mathf.Min(drawperformer.drawAmount, drawpile.Count);
-        int notDrawn = drawperformer.drawAmount- CardAmount;
+        int CardAmount = Mathf.Min(drawperformer.Amount, drawpile.Count);
+        int notDrawn = drawperformer.Amount- CardAmount;
+
         for(int i = 0; i < CardAmount; i++)
         {
             yield return DrawCards();
         }
         if(notDrawn > 0)
         {
+            Debug.Log("fill her up");
             RefillDeck();
             for(int i = 0; i < notDrawn; i++)
             {
@@ -63,6 +71,7 @@ public class CardSystem : Singleton<CardSystem>
             CardDescriptions cardview =handdetails.RemoveCard(card);
             yield return dicardCard(cardview);
         }
+        Debug.Log("hand clearded");
         Hand.Clear();
 
     }

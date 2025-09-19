@@ -10,11 +10,12 @@ public class EnemySystem : MonoBehaviour
     }
     private void OnDisable()
     {
-        
+        ActionSystem.Dettachperformer<Enemyturn>();
     }
     private IEnumerator EnremyTurnperformer(Enemyturn enemyturn)
     {
-        Debug.Log("enemyturn)");
+        Debug.Log("enemyturn");
         yield return new WaitForSeconds(2f);
+        Debug.Log("turn done");
     }
 }

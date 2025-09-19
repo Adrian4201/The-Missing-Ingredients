@@ -14,6 +14,7 @@ public class CardviewsCreator : Singleton<CardviewsCreator>
         cardview.transform.localScale = Vector3.zero;
         cardview.transform.DOScale(Vector3.one, 0.15f);
         cardview.Setup(cards);
+        Debug.Log("hi");
         return cardview;
 
 

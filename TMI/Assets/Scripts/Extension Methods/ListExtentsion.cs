@@ -6,7 +6,8 @@ public static class ListExtentsion
 {
     public static T Draw<T>(this List<T> list)
     {
-        if (list.Count == 0) return default;
+        Debug.Log("pulled");
+        if (list.Count == 0) return  default;
         int r = Random.Range(0, list.Count);
         T t = list[r];
         list.Remove(t);
