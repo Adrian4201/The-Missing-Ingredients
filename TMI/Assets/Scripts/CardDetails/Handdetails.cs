@@ -28,7 +28,7 @@ public class Handdetails : MonoBehaviour
     private CardDescriptions getcardview(Cards card)
     {
         Debug.Log("found");
-        return cards.Where(cardView => cardView.Card ==card).FirstOrDefault();
+        return cards.Where(cardView => cardView.Card == card).FirstOrDefault();
     }
     private IEnumerator UpdateCardPosition(float duration) 
     {
