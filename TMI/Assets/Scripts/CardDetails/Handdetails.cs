@@ -15,10 +15,13 @@ public class Handdetails : MonoBehaviour
     public IEnumerator AddCard(CardDescriptions cardView)
     {
         cards.Add(cardView);
+        Debug.Log("add card");
         yield return UpdateCardPosition(0.15f);
     }
     public CardDescriptions RemoveCard(Cards card)
     {
+        //not being called
+        Debug.Log("Working");
         CardDescriptions cardView = getcardview(card);
         if (cardView == null) return null;
         cards.Remove(cardView);
@@ -27,6 +30,7 @@ public class Handdetails : MonoBehaviour
     }
     private CardDescriptions getcardview(Cards card)
     {
+        //not being called
         Debug.Log("found");
         return cards.Where(cardView => cardView.Card == card).FirstOrDefault();
     }

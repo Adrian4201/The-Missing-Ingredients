@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class ListExtentsion 
 {
+    //potientail problem
     public static T Draw<T>(this List<T> list)
     {
         Debug.Log("pulled");

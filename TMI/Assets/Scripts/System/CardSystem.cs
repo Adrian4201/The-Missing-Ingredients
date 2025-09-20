@@ -20,7 +20,7 @@ public class CardSystem : Singleton<CardSystem>
         ActionSystem.Attachperformmer<DiscardCardsGa>(Discardpreformer);
         Debug.Log("We work");
         ActionSystem.SubscribeReaction<Enemyturn>(EnemyturnReact, ReactionTiming.PRE);
-        ActionSystem.SubscribeReaction<Enemyturn>(EnemyturnReact, ReactionTiming.POST);
+        ActionSystem.SubscribeReaction<Enemyturn>(PostEnemyturnReact, ReactionTiming.POST);
         Debug.Log("So do wee!!!");
 
     }
@@ -30,7 +30,7 @@ public class CardSystem : Singleton<CardSystem>
         ActionSystem.Dettachperformer<DiscardCardsGa>();
         Debug.Log("we off");
         ActionSystem.UnSubscribeReaction<Enemyturn>(EnemyturnReact, ReactionTiming.PRE);
-        ActionSystem.UnSubscribeReaction<Enemyturn>(EnemyturnReact, ReactionTiming.POST);
+        ActionSystem.UnSubscribeReaction<Enemyturn>(PostEnemyturnReact, ReactionTiming.POST);
     }
     //setups
     public void Setup(List<CardData> deckData)
@@ -51,10 +51,12 @@ public class CardSystem : Singleton<CardSystem>
 
         for(int i = 0; i < CardAmount; i++)
         {
+            Debug.Log("i might be being drawn");
             yield return DrawCards();
         }
         if(notDrawn > 0)
         {
+            //potientail prob
             Debug.Log("fill her up");
             RefillDeck();
             for(int i = 0; i < notDrawn; i++)
@@ -63,6 +65,7 @@ public class CardSystem : Singleton<CardSystem>
             }
         }
     }
+    //works fine
     private IEnumerator Discardpreformer(DiscardCardsGa Discardperformer)
     {
         foreach(var card in Hand)
@@ -101,8 +104,11 @@ public class CardSystem : Singleton<CardSystem>
         drawpile.AddRange(Discardpile);
         drawpile.Clear();
     }
+
+    //not working
     private IEnumerator dicardCard(CardDescriptions cardview)
     {
+        Debug.Log("working son");
         cardview.transform.DOScale(Vector3.zero, 0.15f);
         Tween tween = cardview.transform.DOMove(Discardpoint.position, 0.15f);
         yield return tween.WaitForCompletion();
