@@ -40,4 +40,37 @@ public class CardDescriptions : MonoBehaviour
         wrapper.SetActive(true);
         Debug.Log("shit myself again");
     }
+    private void OnMouseDown()
+    {
+       if (!InterationSystem.Instance.CanInteract()) return;
+        InterationSystem.Instance.IsDragging = true;
+        wrapper.SetActive(true);
+        HoverSystem.Instance.Hide();
+        DragStartPos = transform.position;
+        DragRotation = transform.rotation;
+        transform.rotation = Quaternion.Euler(0,0,0);
+        transform.position = Mouseutil.GetMousePositionInWorldSpace(-1);
+
+    }
+    private void OnMouseDrag()
+    {
+        if (!InterationSystem.Instance.CanInteract()) return;
+        transform.position = Mouseutil.GetMousePositionInWorldSpace(-1);
+
+    }
+    private void OnMouseUp()
+    {
+        if (!InterationSystem.Instance.CanInteract()) return;
+        if(Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hit, 10f))
+        {
+
+
+        }
+        else
+        {
+            transform.position = DragStartPos;
+            transform.rotation = DragRotation;
+        }
+        InterationSystem.Instance.IsDragging= false;
+    }
 }
