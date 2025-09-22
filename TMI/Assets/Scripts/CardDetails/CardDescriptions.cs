@@ -55,15 +55,28 @@ public class CardDescriptions : MonoBehaviour
         DragStartPos = transform.position;
         DragRotation = transform.rotation;
         transform.rotation = Quaternion.Euler(0,0,0);
-        transform.position = MouseUtil.GetMousePositionInWorldSpace();
+        transform.position = Mouseutil.GetMousePositionInWorldSpace(-1);
 
     }
     private void OnMouseDrag()
     {
         if (!InterationSystem.Instance.CanInteract()) return;
+        transform.position = Mouseutil.GetMousePositionInWorldSpace(-1);
+
     }
     private void OnMouseUp()
     {
         if (!InterationSystem.Instance.CanInteract()) return;
+        if(Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hit, 10f))
+        {
+
+
+        }
+        else
+        {
+            transform.position = DragStartPos;
+            transform.rotation = DragRotation;
+        }
+        InterationSystem.Instance.IsDragging= false;
     }
 }
