@@ -16,6 +16,10 @@ public class CardDescriptions : MonoBehaviour
     [SerializeField] private GameObject wrapper;
    
     public Cards Card {  get; private set; }
+
+    private Vector3 DragStartPos;
+
+    public Quaternion DragRotation;
     public void Setup(Cards card)
     {
         Card = card;
@@ -27,6 +31,7 @@ public class CardDescriptions : MonoBehaviour
     }
     void OnMouseEnter()
     {
+        if (!InterationSystem.Instance.CanHover()) return;
         wrapper.SetActive(false);
         Vector3 pos = new(transform.position.x, - 2);
         HoverSystem.Instance.Show(Card, pos);  
@@ -36,6 +41,7 @@ public class CardDescriptions : MonoBehaviour
     }
     void OnMouseExit()
     {
+        if (!InterationSystem.Instance.CanHover()) return;
         HoverSystem.Instance.Hide();
         wrapper.SetActive(true);
         Debug.Log("shit myself again");
