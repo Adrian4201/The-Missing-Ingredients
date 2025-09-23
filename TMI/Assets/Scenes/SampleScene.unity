@@ -122,10 +122,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of b64e153 (push)
+HEAD
 --- !u!1 &134007752
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,9 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9644ca35a8e7fe4a96da5a6946d3081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-=======
->>>>>>> b64e1534ae694b6ed009c27a9358d3701c496ecf
 =======
   Deckdata:
   - {fileID: 11400000, guid: a258886add80248458f4db75fa13f523, type: 2}
