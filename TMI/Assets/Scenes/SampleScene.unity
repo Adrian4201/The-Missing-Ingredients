@@ -125,8 +125,11 @@ NavMeshSettings:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> parent of b64e153 (push)
+=======
+>>>>>>> parent of e48a8d7 (MoneySystem)
 =======
 >>>>>>> parent of e48a8d7 (MoneySystem)
 --- !u!1 &134007752
@@ -175,16 +178,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> b64e1534ae694b6ed009c27a9358d3701c496ecf
 =======
+=======
+>>>>>>> parent of e48a8d7 (MoneySystem)
 =======
 >>>>>>> parent of e48a8d7 (MoneySystem)
   Deckdata:
   - {fileID: 11400000, guid: a258886add80248458f4db75fa13f523, type: 2}
   - {fileID: 11400000, guid: a258886add80248458f4db75fa13f523, type: 2}
   - {fileID: 11400000, guid: a258886add80248458f4db75fa13f523, type: 2}
+<<<<<<< HEAD
   - {fileID: 11400000, guid: 40ec4d024956ee14abe4a0cd87c006f9, type: 2}
+=======
+>>>>>>> parent of e48a8d7 (MoneySystem)
   - {fileID: 11400000, guid: a258886add80248458f4db75fa13f523, type: 2}
   - {fileID: 11400000, guid: a258886add80248458f4db75fa13f523, type: 2}
   - {fileID: 11400000, guid: a258886add80248458f4db75fa13f523, type: 2}
@@ -192,7 +201,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a258886add80248458f4db75fa13f523, type: 2}
   - {fileID: 11400000, guid: a258886add80248458f4db75fa13f523, type: 2}
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> parent of b64e153 (push)
+=======
+>>>>>>> parent of e48a8d7 (MoneySystem)
 =======
 >>>>>>> parent of e48a8d7 (MoneySystem)
 --- !u!1 &176399767
@@ -1365,6 +1377,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667b2b2aae9c83d4495ae1e6a070d826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+=======
+--- !u!1 &1688657402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1688657403}
+  - component: {fileID: 1688657404}
+  m_Layer: 0
+  m_Name: SetupSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1688657403
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688657402}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1077395309}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1688657404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688657402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f724be9bfd6cb4ea71462832b37fcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> parent of e48a8d7 (MoneySystem)
 --- !u!1 &1931328294
 GameObject:
   m_ObjectHideFlags: 0
