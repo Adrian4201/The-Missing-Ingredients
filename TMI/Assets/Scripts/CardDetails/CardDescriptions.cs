@@ -46,7 +46,7 @@ public class CardDescriptions : MonoBehaviour
         wrapper.SetActive(true);
         Debug.Log("shit myself again");
     }
-<<<<<<< HEAD
+
     private void OnMouseDown()
     {
        if (!InterationSystem.Instance.CanInteract()) return;
@@ -67,6 +67,5 @@ public class CardDescriptions : MonoBehaviour
     {
         if (!InterationSystem.Instance.CanInteract()) return;
     }
-=======
->>>>>>> parent of 23bb525 (addddrag)
+
 }
