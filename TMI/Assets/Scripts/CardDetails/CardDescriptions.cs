@@ -25,7 +25,7 @@ public class CardDescriptions : MonoBehaviour
         Card = card;
         Title.text = card.Title;
         Description.text = card.Description;
-        Damage.text = card.Mana.ToString();
+        Damage.text = card.Damage.ToString();
         imageS.sprite = card.Image;
         
     }

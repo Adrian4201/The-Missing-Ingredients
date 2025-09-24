@@ -9,13 +9,13 @@ public class Cards
     public string Description => data.Description;
     public Sprite Image => data.Image;
 
-    public int Mana {  get; private set; }
+    public int Damage {  get; private set; }
 
     private readonly CardData data;
     public Cards(CardData card)
     {
         data = card;
-        Mana = card.Mana;
+        Damage = card.Damage;
     }
     
   
