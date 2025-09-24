@@ -7,10 +7,14 @@ public class EndturnUI : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField] private Cards card;
+    public CardSystem cardSystem;
+    public bool canplay = false;
+    // Have player draw 2 cards
 
-    public bool canplay = false; 
+    public void Start()
+    {
+        
+    }
 
 
-   
-    
 }
