@@ -55,7 +55,7 @@ public class CardDescriptions : MonoBehaviour
         DragStartPos = transform.position;
         DragRotation = transform.rotation;
         transform.rotation = Quaternion.Euler(0,0,0);
-        transform.position = MouseUtil.GetMousePositionInWorldSpace();
+        //transform.position = MouseUtil.GetMousePositionInWorldSpace();
 
     }
     private void OnMouseDrag()
