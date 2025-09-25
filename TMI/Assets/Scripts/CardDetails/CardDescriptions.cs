@@ -13,6 +13,8 @@ public class CardDescriptions : MonoBehaviour
 
     [SerializeField] private SpriteRenderer imageS;
 
+    [field: SerializeField] public CardType Type { get; private set; } // new
+
     [SerializeField] private GameObject wrapper;
    
     public Cards Card {  get; private set; }
@@ -20,6 +22,11 @@ public class CardDescriptions : MonoBehaviour
     private Vector3 DragStartPos;
 
     public Quaternion DragRotation;
+    public enum CardType
+    {
+        Red, Orange, Yellow, Green, Blue, Purple
+    }
+
     public void Setup(Cards card)
     {
         Card = card;
@@ -27,8 +34,23 @@ public class CardDescriptions : MonoBehaviour
         Description.text = card.Description;
         Damage.text = card.Damage.ToString();
         imageS.sprite = card.Image;
-        
+
+        // Color the damage text based on CardType
+        Damage.color = TypeColorMap.Colors[card.Type];
+
     }
+    public static class TypeColorMap
+    {
+        public static readonly Dictionary<CardType, Color> Colors = new()
+    {
+        { CardType.Red, Color.red },
+        { CardType.Orange, new Color(1f, 0.5f, 0f) },   // orange
+        { CardType.Yellow, Color.yellow },
+        { CardType.Blue, Color.blue },
+        { CardType.Purple, new Color(0.5f, 0f, 0.5f) }  // purple
+    };
+    }
+
     void OnMouseEnter()
     {
         if (!InterationSystem.Instance.CanHover()) return;

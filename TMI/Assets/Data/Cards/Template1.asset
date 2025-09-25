@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7780ddfb4d25cac439373910c15e7445, type: 3}
-  m_Name: M.G.ShoulderBash
+  m_Name: Template1
   m_EditorClassIdentifier: 
   <Description>k__BackingField: Gain +3 Barrier
   <Damage>k__BackingField: 1
