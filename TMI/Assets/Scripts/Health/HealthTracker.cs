@@ -5,11 +5,16 @@ using UnityEngine.UI;
 
 public class HealthTracker : MonoBehaviour
 {
-    [SerializeField] private Slider slider;
-    public Dealdamage damage;
-    int maxHealth = 100;
-    int health = 0;
-    public void Update()
+    public int maxHealth = 100;
+    public int CurrentHealth;
+    public HealthBar healthBar;
+    void Start()
+    {
+        CurrentHealth = maxHealth;
+        healthBar.SetmaxHealth(maxHealth);
+    }
+
+    public void takedamage(Dealdamage damage)
     {
         
     }
