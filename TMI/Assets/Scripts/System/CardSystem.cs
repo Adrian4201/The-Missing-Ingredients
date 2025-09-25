@@ -19,6 +19,7 @@ public class CardSystem : Singleton<CardSystem>
         ActionSystem.Attachperformmer<DrawCard>(DrawcardPerformer);
         ActionSystem.Attachperformmer<DiscardCardsGa>(Discardpreformer);
         ActionSystem.Attachperformmer<Playcard>(PlayCardPerformer);
+        ActionSystem.Attachperformmer<Dealdamage>(Dealdamageperformer);
         Debug.Log("We work");
         ActionSystem.SubscribeReaction<Enemyturn>(EnemyturnReact, ReactionTiming.PRE);
         ActionSystem.SubscribeReaction<Enemyturn>(PostEnemyturnReact, ReactionTiming.POST);
@@ -30,7 +31,7 @@ public class CardSystem : Singleton<CardSystem>
         ActionSystem.Dettachperformer<DrawCard>();
         ActionSystem.Dettachperformer<DiscardCardsGa>();
         ActionSystem.Dettachperformer<Playcard>();
-
+        ActionSystem.Dettachperformer<Dealdamage>();
         Debug.Log("we off");
         ActionSystem.UnSubscribeReaction<Enemyturn>(EnemyturnReact, ReactionTiming.PRE);
         ActionSystem.UnSubscribeReaction<Enemyturn>(PostEnemyturnReact, ReactionTiming.POST);
@@ -122,6 +123,16 @@ public class CardSystem : Singleton<CardSystem>
         Hand.Remove(card.card);
         CardDescriptions cardview = handdetails.RemoveCard(card.card);
         yield return dicardCard(cardview);
+    }
+    public IEnumerator Dealdamageperformer(Dealdamage damage)
+    {
+        if (damage.Target != null)
+        {
+            damage.Target.takedamage(damage);
+            Debug.Log($"Dealt {damage.Damage} damage!");
+        }
+        yield break;
+
     }
 
 }
