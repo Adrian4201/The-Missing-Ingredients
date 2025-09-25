@@ -92,7 +92,7 @@ public class CardSystem : Singleton<CardSystem>
 
     }
     //helper methods
-    private IEnumerator DrawCards()
+    public IEnumerator DrawCards()
     {
         Cards card = drawpile.Draw();
         Hand.Add(card);
@@ -106,7 +106,7 @@ public class CardSystem : Singleton<CardSystem>
     }
 
     //not working
-    private IEnumerator dicardCard(CardDescriptions cardview)
+    public IEnumerator dicardCard(CardDescriptions cardview)
     {
         Debug.Log("working son");
         cardview.transform.DOScale(Vector3.zero, 0.15f);
