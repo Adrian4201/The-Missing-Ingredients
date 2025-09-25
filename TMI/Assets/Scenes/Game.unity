@@ -571,9 +571,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -9161256171648042671, guid: dfeee1b08d82db646b9685af9a9e7cf7, type: 3}
-      propertyPath: <Type>k__BackingField
-      value: 1
+    - target: {fileID: 189669593770764325, guid: dfeee1b08d82db646b9685af9a9e7cf7, type: 3}
+      propertyPath: m_fontSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 189669593770764325, guid: dfeee1b08d82db646b9685af9a9e7cf7, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 761372508508398789, guid: dfeee1b08d82db646b9685af9a9e7cf7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -619,10 +623,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cardview
       objectReference: {fileID: 0}
+    - target: {fileID: 7347859657714686895, guid: dfeee1b08d82db646b9685af9a9e7cf7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2.109
+      objectReference: {fileID: 0}
+    - target: {fileID: 7347859657714686895, guid: dfeee1b08d82db646b9685af9a9e7cf7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.645
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2640716145926696014, guid: dfeee1b08d82db646b9685af9a9e7cf7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
     - targetCorrespondingSourceObject: {fileID: 5296962897429922474, guid: dfeee1b08d82db646b9685af9a9e7cf7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}

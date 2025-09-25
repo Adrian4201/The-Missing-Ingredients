@@ -11,6 +11,9 @@ public class CardData : ScriptableObject
     [field: SerializeField] public Sprite CardImage { get; private set; }
     [field: SerializeField] public CardType Type { get; private set; }
 
+    [field: SerializeField] public CardRarity Rarity { get; private set; }
+
+    [field: SerializeField] public List<KeywordData> Keywords { get; private set; }
 
 
 }

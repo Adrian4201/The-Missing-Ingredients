@@ -17,3 +17,5 @@ MonoBehaviour:
   <Image>k__BackingField: {fileID: 21300000, guid: ddc6684bf7db6284d803b000c7e8fa5e, type: 3}
   <CardImage>k__BackingField: {fileID: 21300000, guid: 63c9870bab932af4dbed5364d086cbfa, type: 3}
   <Type>k__BackingField: 4
+  <Rarity>k__BackingField: 0
+  <Keywords>k__BackingField: []

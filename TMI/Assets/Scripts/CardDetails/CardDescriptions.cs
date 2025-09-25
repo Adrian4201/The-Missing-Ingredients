@@ -13,6 +13,9 @@ public class CardDescriptions : MonoBehaviour
 
     [SerializeField] private SpriteRenderer imageS;
 
+    [SerializeField] private TMP_Text rarityText;
+
+
     [field: SerializeField] public CardType Type { get; private set; } // new
 
     [SerializeField] private GameObject wrapper;
@@ -37,6 +40,8 @@ public class CardDescriptions : MonoBehaviour
 
         // Color the damage text based on CardType
         Damage.color = TypeColorMap.Colors[card.Type];
+
+        rarityText.text = RarityLabelMap.Labels[card.Rarity];
 
     }
     public static class TypeColorMap

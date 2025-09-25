@@ -14,6 +14,8 @@ public class Cards
 
     public CardType Type => data.Type; // expose the type from CardData
 
+    public CardRarity Rarity => data.Rarity; //
+
     private readonly CardData data;
     public Cards(CardData card)
     {
