@@ -8,4 +8,5 @@ public class CardData : ScriptableObject
     [field: SerializeField] public int Mana { get; private set; }
     [field: SerializeField]public Sprite Image { get; private set; }
     [field: SerializeField] public Sprite CardImage { get; private set; }
+    [field: SerializeField] public List<CardEffects> Effects { get; private set; }
 }

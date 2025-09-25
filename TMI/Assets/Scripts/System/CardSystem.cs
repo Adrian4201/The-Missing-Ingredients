@@ -89,7 +89,7 @@ public class CardSystem : Singleton<CardSystem>
     }
     private void PostEnemyturnReact(Enemyturn enemyturn)
     {
-        DrawCard drawcard = new(5);
+        DrawCard drawcard = new(2);
         ActionSystem.Instance.AddAction(drawcard);
 
 
