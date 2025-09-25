@@ -6,8 +6,10 @@ public class TurnSystem : CardSystem
 {
     // Start is called before the first frame update
 
-    [SerializeField] private Cards card;
-    [SerializeField] private CardDescriptions cardview;
+     private Cards card;
+
+    private CardDescriptions cardview;
+    private Playcard Card;
     public CardSystem cardSystem;
     public bool canplay = true;
     // Have player draw 2 cards
@@ -25,7 +27,7 @@ public class TurnSystem : CardSystem
 
             //Player draw card method
             CardSystem.Instance.DrawCards();
-
+            CardSystem.Instance.PlayCardPerformer(Card);
             //Don't do anything else until player plays a card
             //Once all actions or "effects" are done, run this same StartTurn method
             CardSystem.Instance.dicardCard(cardview);

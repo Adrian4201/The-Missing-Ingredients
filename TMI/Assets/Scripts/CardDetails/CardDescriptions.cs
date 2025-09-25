@@ -15,6 +15,7 @@ public class CardDescriptions : MonoBehaviour
 
     [SerializeField] private GameObject wrapper;
    
+    [SerializeField] private LayerMask Droparea;
     public Cards Card {  get; private set; }
 
     private Vector3 DragStartPos;
@@ -67,9 +68,10 @@ public class CardDescriptions : MonoBehaviour
     private void OnMouseUp()
     {
         if (!InterationSystem.Instance.CanInteract()) return;
-        if(Physics.Raycast(transform.position,Vector3.forward, out RaycastHit Hit, 10f))
+        if(Physics.Raycast(transform.position,Vector3.forward, out RaycastHit Hit, 10f, Droparea))
         {
-
+            Playcard play = new(Card);
+            ActionSystem.Instance.Preform(play);
         }
         else
         {

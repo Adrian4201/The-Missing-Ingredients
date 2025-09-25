@@ -425,10 +425,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Title: {fileID: 3218252955406269942}
-  mana: {fileID: 7053205632334068723}
+  Damage: {fileID: 7053205632334068723}
   Description: {fileID: 1239052424870864925}
   imageS: {fileID: 8447802513001172487}
   wrapper: {fileID: 1912201468195012648}
+  DragRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!210 &1736247376628407384
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -474,7 +475,7 @@ GameObject:
   - component: {fileID: 5365505044323936831}
   - component: {fileID: 7053205632334068723}
   m_Layer: 0
-  m_Name: Mana
+  m_Name: Damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

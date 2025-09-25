@@ -117,7 +117,7 @@ public class CardSystem : Singleton<CardSystem>
         yield return tween.WaitForCompletion();
         Destroy(cardview.gameObject);
     }
-    private IEnumerator PlayCardPerformer(Playcard card)
+    public IEnumerator PlayCardPerformer(Playcard card)
     {
         Hand.Remove(card.card);
         CardDescriptions cardview = handdetails.RemoveCard(card.card);
