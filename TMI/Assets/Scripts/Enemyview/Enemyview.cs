@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Enemyview : MonoBehaviour
+public class Enemyview : Combatantviews
 {
     [SerializeField] private TMP_Text Attack;
 
@@ -13,7 +13,7 @@ public class Enemyview : MonoBehaviour
     {
         attackPower = 10;
         UpdatedAttack();
-        
+        setupBase(attackPower, null);
     }
     private void UpdatedAttack()
     {
