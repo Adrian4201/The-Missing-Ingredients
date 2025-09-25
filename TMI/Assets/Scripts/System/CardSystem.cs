@@ -18,6 +18,7 @@ public class CardSystem : Singleton<CardSystem>
 
         ActionSystem.Attachperformmer<DrawCard>(DrawcardPerformer);
         ActionSystem.Attachperformmer<DiscardCardsGa>(Discardpreformer);
+        ActionSystem.Attachperformmer<Playcard>(PlayCardPerformer);
         Debug.Log("We work");
         ActionSystem.SubscribeReaction<Enemyturn>(EnemyturnReact, ReactionTiming.PRE);
         ActionSystem.SubscribeReaction<Enemyturn>(PostEnemyturnReact, ReactionTiming.POST);
@@ -28,6 +29,8 @@ public class CardSystem : Singleton<CardSystem>
     {
         ActionSystem.Dettachperformer<DrawCard>();
         ActionSystem.Dettachperformer<DiscardCardsGa>();
+        ActionSystem.Dettachperformer<Playcard>();
+
         Debug.Log("we off");
         ActionSystem.UnSubscribeReaction<Enemyturn>(EnemyturnReact, ReactionTiming.PRE);
         ActionSystem.UnSubscribeReaction<Enemyturn>(PostEnemyturnReact, ReactionTiming.POST);
@@ -113,6 +116,11 @@ public class CardSystem : Singleton<CardSystem>
         Tween tween = cardview.transform.DOMove(Discardpoint.position, 0.15f);
         yield return tween.WaitForCompletion();
         Destroy(cardview.gameObject);
+    }
+    private IEnumerator PlayCardPerformer(Playcard card)
+    {
+        Hand.Remove(card.card);
+        CardDescriptions cardview = handdetails.RemoveCard(card.card);
     }
 
 }
