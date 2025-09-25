@@ -429,6 +429,9 @@ MonoBehaviour:
   Description: {fileID: 1239052424870864925}
   imageS: {fileID: 8447802513001172487}
   wrapper: {fileID: 1912201468195012648}
+  Droparea:
+    serializedVersion: 2
+    m_Bits: 64
   DragRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!210 &1736247376628407384
 SortingGroup:

@@ -121,6 +121,7 @@ public class CardSystem : Singleton<CardSystem>
     {
         Hand.Remove(card.card);
         CardDescriptions cardview = handdetails.RemoveCard(card.card);
+        yield return dicardCard(cardview);
     }
 
 }
