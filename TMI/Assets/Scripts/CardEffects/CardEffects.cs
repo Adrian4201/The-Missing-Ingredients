@@ -18,6 +18,9 @@ public class CardEffects : MonoBehaviour
             }
         }
     }
+    //Shuffle system
+    //make a for loop to check for the cards left in the drawpile
+    //shuffle the remaining cards
 
 }
 
