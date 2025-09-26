@@ -12,7 +12,7 @@ public class Combatantviews : MonoBehaviour
     public int Maxhealth {  get; private set; }
 
     public int CurrentHealth { get; private set; }
-    public void setupBase(int health, Sprite image)
+    protected void setupBase(int health, Sprite image)
     {
         Maxhealth = CurrentHealth + health; 
         spriteRenderer.sprite = image;

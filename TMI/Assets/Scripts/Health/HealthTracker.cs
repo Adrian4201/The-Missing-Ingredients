@@ -13,7 +13,7 @@ public class HealthTracker : MonoBehaviour
     {
         CurrentHealth = maxHealth;
         healthBar.SetmaxHealth(maxHealth);
-        combatView.setupBase(maxHealth, combatView.GetComponent<SpriteRenderer>().sprite);
+        //combatView.setupBase(maxHealth, combatView.GetComponent<SpriteRenderer>().sprite);
     }
     public void takedamage(Dealdamage damage)
     {

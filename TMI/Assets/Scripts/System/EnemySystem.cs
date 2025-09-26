@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySystem : MonoBehaviour
+public class EnemySystem : Singleton<EnemySystem>
 {
+    [SerializeField] private EnemyBoardview enemyBoardview;
     private void OnEnable()
     {
         ActionSystem.Attachperformmer<Enemyturn>(EnremyTurnperformer);
@@ -11,6 +12,10 @@ public class EnemySystem : MonoBehaviour
     private void OnDisable()
     {
         ActionSystem.Dettachperformer<Enemyturn>();
+    }
+    public void SetUp(List<EnemyData> enemydata)
+    {
+
     }
     private IEnumerator EnremyTurnperformer(Enemyturn enemyturn)
     {
