@@ -51,6 +51,7 @@ public class TurnSystem : CardSystem
         EnemyAttack enemAttack = new EnemyAttack(card);
 
         ActionSystem.Instance.AddAction(enemAttack);
+        StartTurn(canplay);
     }
     public void CardEffectPerformer(bool hasPerformed)
     {
