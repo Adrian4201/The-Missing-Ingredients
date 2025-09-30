@@ -13,9 +13,12 @@ public class EnemySystem : Singleton<EnemySystem>
     {
         ActionSystem.Dettachperformer<Enemyturn>();
     }
-    public void SetUp(List<EnemyData> enemydata)
+    public void SetUp(List<EnemyData> enemydatas)
     {
-
+        foreach (var enemydata in enemydatas)
+        {
+            enemyBoardview.AddEnemy(enemydata);
+        }
     }
     private IEnumerator EnremyTurnperformer(Enemyturn enemyturn)
     {

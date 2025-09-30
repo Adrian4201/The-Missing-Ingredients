@@ -9,11 +9,13 @@ public class HealthTracker : MonoBehaviour
     public int CurrentHealth;
     public HealthBar healthBar;
     [SerializeField] private Combatantviews combatView;
+    [SerializeField]
+    private Enemyview enemyView;
     void Start()
     {
         CurrentHealth = maxHealth;
         healthBar.SetmaxHealth(maxHealth);
-        //combatView.setupBase(maxHealth, combatView.GetComponent<SpriteRenderer>().sprite);
+       
     }
     public void takedamage(Dealdamage damage)
     {
