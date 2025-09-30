@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Combatantviews : MonoBehaviour
 {
-    [SerializeField] private TMP_Text healhText;
+    [SerializeField] private Slider healhText;
+
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     public int Maxhealth {  get; private set; }
 
     public int CurrentHealth { get; private set; }
-    protected void setupBase(int health, Sprite image)
+    public void setupBase(int health, Sprite image)
     {
         Maxhealth = CurrentHealth + health; 
         spriteRenderer.sprite = image;
@@ -22,6 +24,6 @@ public class Combatantviews : MonoBehaviour
     public void updateBase(int health)
     {
         CurrentHealth = health;
-        healhText.text = "Hp" + CurrentHealth;
+        healhText.value = CurrentHealth;
     }
 }

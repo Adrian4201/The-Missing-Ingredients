@@ -6,16 +6,21 @@ using UnityEngine.UI;
 public class HealthTracker : MonoBehaviour
 {
     public int maxHealth = 100;
+
     public int CurrentHealth;
+
     public HealthBar healthBar;
+
     [SerializeField] private Combatantviews combatView;
-    [SerializeField]
+
+    [SerializeField] private Sprite spriteRenderer;
+
     private Enemyview enemyView;
     void Start()
     {
         CurrentHealth = maxHealth;
         healthBar.SetmaxHealth(maxHealth);
-       
+        combatView.setupBase(CurrentHealth, spriteRenderer);
     }
     public void takedamage(Dealdamage damage)
     {

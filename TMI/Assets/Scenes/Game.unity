@@ -524,6 +524,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3477493840662902383, guid: 7ee3bb935a4f35c4c89687d8f2ab5ab8, type: 3}
   m_PrefabInstance: {fileID: 496139802706598765}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &971946941 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5566851316110761553, guid: 7ee3bb935a4f35c4c89687d8f2ab5ab8, type: 3}
+  m_PrefabInstance: {fileID: 496139802706598765}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2324c5e9184e454d815f782bc1c0d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1084155072
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,6 +1135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f724be9bfd6cb4ea71462832b37fcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyDatas: []
   cardData:
   - {fileID: 11400000, guid: a258886add80248458f4db75fa13f523, type: 2}
   - {fileID: 11400000, guid: a258886add80248458f4db75fa13f523, type: 2}
@@ -1665,6 +1677,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 564444069}
     m_Modifications:
+    - target: {fileID: 1137561525897350999, guid: 7ee3bb935a4f35c4c89687d8f2ab5ab8, type: 3}
+      propertyPath: combatView
+      value: 
+      objectReference: {fileID: 971946941}
+    - target: {fileID: 1137561525897350999, guid: 7ee3bb935a4f35c4c89687d8f2ab5ab8, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 3477493840662902383, guid: 7ee3bb935a4f35c4c89687d8f2ab5ab8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.21
