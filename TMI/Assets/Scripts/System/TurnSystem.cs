@@ -37,9 +37,20 @@ public class TurnSystem : CardSystem
         else
         {
             //Opponent turn
+            StartCoroutine(EnemyTurn());
         }
 
         
+    }
+
+    public IEnumerator EnemyTurn()
+    {
+
+        yield return CardSystem.Instance.DrawCards();
+
+        EnemyAttack enemAttack = new EnemyAttack(card);
+
+        ActionSystem.Instance.AddAction(enemAttack);
     }
     public void CardEffectPerformer(bool hasPerformed)
     {
