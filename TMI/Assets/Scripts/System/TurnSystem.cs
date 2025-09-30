@@ -29,6 +29,7 @@ public class TurnSystem : CardSystem
             CardSystem.Instance.DrawCards();
             CardSystem.Instance.PlayCardPerformer(Card);
             //Don't do anything else until player plays a card
+
             //Once all actions or "effects" are done, run this same StartTurn method
             CardSystem.Instance.dicardCard(cardview);
             //With the opposite boolean
