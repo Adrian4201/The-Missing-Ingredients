@@ -44,7 +44,7 @@ public class CardSystem : Singleton<CardSystem>
     }
     //performers
 
-    private IEnumerator DrawcardPerformer(DrawCard drawperformer)
+    public IEnumerator DrawcardPerformer(DrawCard drawperformer)
     {
         int CardAmount = Mathf.Min(drawperformer.Amount, drawpile.Count);
         int notDrawn = drawperformer.Amount- CardAmount;
@@ -66,7 +66,7 @@ public class CardSystem : Singleton<CardSystem>
         }
     }
     //works fine
-    private IEnumerator Discardpreformer(DiscardCardsGa Discardperformer)
+    public IEnumerator Discardpreformer(DiscardCardsGa Discardperformer)
     {
         foreach(var card in Hand)
         {
@@ -92,7 +92,7 @@ public class CardSystem : Singleton<CardSystem>
 
     }
     //helper methods
-    private IEnumerator DrawCards()
+    public IEnumerator DrawCards()
     {
         Cards card = drawpile.Draw();
         Hand.Add(card);
@@ -106,7 +106,7 @@ public class CardSystem : Singleton<CardSystem>
     }
 
     //not working
-    private IEnumerator dicardCard(CardDescriptions cardview)
+    public IEnumerator dicardCard(CardDescriptions cardview)
     {
         Debug.Log("working son");
         cardview.transform.DOScale(Vector3.zero, 0.15f);
