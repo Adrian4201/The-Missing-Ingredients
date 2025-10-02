@@ -83,7 +83,13 @@ public class CardDescriptions : MonoBehaviour
         if (!InterationSystem.Instance.CanInteract()) return;
         if(Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hit, 10f))
         {
-
+            Playcard playcard = new(Card);
+            ActionSystem.Instance.Preform(playcard);
+        }
+        else
+        {
+            transform.position = DragStartPos;
+            transform.rotation = DragRotation;
         }
         // release drag logic
     }
