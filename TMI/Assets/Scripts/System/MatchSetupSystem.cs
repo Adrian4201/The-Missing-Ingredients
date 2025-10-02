@@ -5,6 +5,7 @@ using UnityEngine;
 public class MatchSetupSystem : MonoBehaviour
 {
     [SerializeField] private List<EnemyData> enemyDatas;
+
     [SerializeField] private List<CardData> cardData;
     private void Start()
     {

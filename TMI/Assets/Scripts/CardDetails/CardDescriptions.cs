@@ -5,8 +5,11 @@ public class CardDescriptions : MonoBehaviour
 {
     [Header("Card Elements")]
     [SerializeField] private TMP_Text Title;
+
     [SerializeField] private TMP_Text Damage;
+
     [SerializeField] private TMP_Text Description;
+
     [SerializeField] private TMP_Text RarityText;   //  NEW
     [SerializeField] private SpriteRenderer imageS;
     [SerializeField] private SpriteRenderer cardBackground;
