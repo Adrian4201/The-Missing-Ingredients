@@ -10,7 +10,7 @@ public class CardDescriptions : MonoBehaviour
 
     [SerializeField] private TMP_Text Description;
 
-    [SerializeField] private TMP_Text RarityText;   //  NEW
+    //[SerializeField] private TMP_Text RarityText;   //  NEW
     [SerializeField] private SpriteRenderer imageS;
     [SerializeField] private SpriteRenderer cardBackground;
     [SerializeField] private GameObject wrapper;
@@ -38,7 +38,7 @@ public class CardDescriptions : MonoBehaviour
         }
 
         //  Apply rarity text
-        RarityText.text = card.Rarity.ToString();
+       // RarityText.text = card.Rarity.ToString();
 
         
     }

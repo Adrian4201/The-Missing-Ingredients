@@ -102,7 +102,7 @@ public class CardSystem : Singleton<CardSystem>
     {
         Cards card = drawpile.Draw();
         Hand.Add(card);
-        CardDescriptions view = CardviewsCreator.Instance.CreateCardView(card, Drawpoint.position, Drawpoint.rotation);
+        CardDescriptions view = CardviewsCreator.Instance.CreateCardView(card, Drawpoint.position, Drawpoint.rotation,handdetails.transform);
         yield return handdetails.AddCard(view);
     }
     private void RefillDeck()

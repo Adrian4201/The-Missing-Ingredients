@@ -10,8 +10,11 @@ public class MatchSetupSystem : MonoBehaviour
     private void Start()
     {
         CardSystem.Instance.Setup(cardData);
+
         EnemySystem.Instance.SetUp(enemyDatas);
+
         DrawCard card = new(2);
+
         ActionSystem.Instance.Preform(card);
     }
 }

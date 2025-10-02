@@ -14,6 +14,7 @@ public class Handdetails : MonoBehaviour
 
     public IEnumerator AddCard(CardDescriptions cardView)
     {
+        cardView.transform.SetParent(transform, worldPositionStays :false);
         cards.Add(cardView);
         Debug.Log("add card");
         yield return UpdateCardPosition(0.15f);

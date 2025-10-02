@@ -689,8 +689,8 @@ MonoBehaviour:
   Damage: {fileID: 7053205632334068723}
   Description: {fileID: 1239052424870864925}
   RarityText: {fileID: 0}
-  imageS: {fileID: 8447802513001172487}
-  cardBackground: {fileID: 0}
+  imageS: {fileID: 1925264634608772236}
+  cardBackground: {fileID: 8447802513001172487}
   wrapper: {fileID: 1912201468195012648}
   DragRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!210 &1736247376628407384
