@@ -1145,14 +1145,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f724be9bfd6cb4ea71462832b37fcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyDatas: []
+  enemyDatas:
+  - {fileID: 11400000, guid: 26932a5b677d82f4b9939ff116d2a6ee, type: 2}
   cardData:
-  - {fileID: 11400000, guid: a258886add80248458f4db75fa13f523, type: 2}
-  - {fileID: 11400000, guid: a258886add80248458f4db75fa13f523, type: 2}
-  - {fileID: 11400000, guid: a258886add80248458f4db75fa13f523, type: 2}
-  - {fileID: 11400000, guid: a258886add80248458f4db75fa13f523, type: 2}
-  - {fileID: 11400000, guid: a258886add80248458f4db75fa13f523, type: 2}
-  - {fileID: 11400000, guid: a258886add80248458f4db75fa13f523, type: 2}
+  - {fileID: 11400000, guid: 9b3fc289a857ffd4483f8a88e4c44aeb, type: 2}
+  - {fileID: 11400000, guid: 9b3fc289a857ffd4483f8a88e4c44aeb, type: 2}
+  - {fileID: 11400000, guid: 9b3fc289a857ffd4483f8a88e4c44aeb, type: 2}
+  - {fileID: 11400000, guid: 9b3fc289a857ffd4483f8a88e4c44aeb, type: 2}
+  - {fileID: 11400000, guid: 9b3fc289a857ffd4483f8a88e4c44aeb, type: 2}
+  - {fileID: 11400000, guid: 9b3fc289a857ffd4483f8a88e4c44aeb, type: 2}
 --- !u!1001 &1672123247
 PrefabInstance:
   m_ObjectHideFlags: 0
