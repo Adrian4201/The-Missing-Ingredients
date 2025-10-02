@@ -74,12 +74,17 @@ public class CardDescriptions : MonoBehaviour
     private void OnMouseDrag()
     {
         if (!InterationSystem.Instance.CanInteract()) return;
+        transform.position = MouseUtil.GetMousePositionInWorldSpace(-1);
         // drag logic here
     }
 
     private void OnMouseUp()
     {
         if (!InterationSystem.Instance.CanInteract()) return;
+        if(Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hit, 10f))
+        {
+
+        }
         // release drag logic
     }
 }

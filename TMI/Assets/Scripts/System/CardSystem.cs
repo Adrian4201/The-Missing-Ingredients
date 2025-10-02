@@ -120,10 +120,10 @@ public class CardSystem : Singleton<CardSystem>
         yield return tween.WaitForCompletion();
         Destroy(cardview.gameObject);
     }
-    public IEnumerator PlayCardPerformer(Playcard card)
+    public IEnumerator PlayCardPerformer(Playcard playCard)
     {
-        Hand.Remove(card.card);
-        CardDescriptions cardview = handdetails.RemoveCard(card.card);
+        Hand.Remove(playCard.card);
+        CardDescriptions cardview = handdetails.RemoveCard(playCard.card);
         yield return dicardCard(cardview);
     }
     public IEnumerator Dealdamageperformer(Dealdamage damage)

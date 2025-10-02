@@ -5,18 +5,19 @@ using UnityEngine;
 
 public class Enemyview : Combatantviews
 {
-    [SerializeField] private TMP_Text Attack;
+    //[SerializeField] private TMP_Text Attack;
 
     public int attackPower { get; set; }
 
     public void setup(EnemyData enemyData)
     {
         attackPower = 10;
-        UpdatedAttack();
+        //UpdatedAttack();
         setupBase(enemyData.Health, enemyData.Image);
     }
-    private void UpdatedAttack()
+    /*private void UpdatedAttack()
     {
         Attack.text = "ATK" + attackPower;
     }
+    */
 }

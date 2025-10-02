@@ -688,7 +688,6 @@ MonoBehaviour:
   Title: {fileID: 3218252955406269942}
   Damage: {fileID: 7053205632334068723}
   Description: {fileID: 1239052424870864925}
-  RarityText: {fileID: 0}
   imageS: {fileID: 1925264634608772236}
   cardBackground: {fileID: 8447802513001172487}
   wrapper: {fileID: 1912201468195012648}

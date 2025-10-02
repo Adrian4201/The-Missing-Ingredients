@@ -15,7 +15,7 @@ public abstract class Singleton <T> : MonoBehaviour where T : MonoBehaviour
         }
         Instance = this as T;
     }
-    protected virtual void OnapplicationQuit()
+    protected virtual void OnApplicationQuit()
     {
         Instance = null;
         Destroy(gameObject);
