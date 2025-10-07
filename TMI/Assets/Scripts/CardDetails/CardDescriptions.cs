@@ -12,8 +12,12 @@ public class CardDescriptions : MonoBehaviour
 
     //[SerializeField] private TMP_Text RarityText;   //  NEW
     [SerializeField] private SpriteRenderer imageS;
+
     [SerializeField] private SpriteRenderer cardBackground;
+
     [SerializeField] private GameObject wrapper;
+
+    [SerializeField] private LayerMask DropArea;
 
     public Cards Card { get; private set; }
 
@@ -81,7 +85,7 @@ public class CardDescriptions : MonoBehaviour
     private void OnMouseUp()
     {
         if (!InterationSystem.Instance.CanInteract()) return;
-        if(Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hit, 10f))
+        if(Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hit, DropArea))
         {
             Playcard playcard = new(Card);
             ActionSystem.Instance.Preform(playcard);

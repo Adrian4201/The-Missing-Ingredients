@@ -654,7 +654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &761372508508398789
 Transform:
   m_ObjectHideFlags: 0
@@ -689,6 +689,9 @@ MonoBehaviour:
   imageS: {fileID: 1925264634608772236}
   cardBackground: {fileID: 8447802513001172487}
   wrapper: {fileID: 1912201468195012648}
+  DropArea:
+    serializedVersion: 2
+    m_Bits: 64
   DragRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!210 &1736247376628407384
 SortingGroup:
