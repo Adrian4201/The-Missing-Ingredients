@@ -2,37 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurnSystem : CardSystem
+public class TurnSystem : MonoBehaviour
 {
     // Start is called before the first frame update
 
-     private Cards card;
+    private Cards card;
 
     private CardDescriptions cardview;
     private Playcard Card;
-    public CardSystem cardSystem;
+
+    [SerializeField] private CardSystem cardSystem;
+
     public bool canplay = true;
+
+    private bool playedcard = false;
     // Have player draw 2 cards
 
     private void Start()
     {
-        StartTurn(canplay);
+        StartCoroutine(StartTurn(true));
     }
 
-    public void StartTurn(bool turn)
+    public IEnumerator StartTurn(bool turn)
     {
+       
+        Debug.Log("Player turn");
         if(turn)
         {
             //Player's turn
+            for (int i = 0; i < 2; i++)
+            {
+                yield return CardSystem.Instance.DrawCards();
+            }
+            
 
+
+            canplay = true;
+            playedcard = false;
             //Player draw card method
-            CardSystem.Instance.DrawCards();
-            CardSystem.Instance.PlayCardPerformer(Card);
+           
             //Don't do anything else until player plays a card
 
+            yield return new WaitUntil(() => playedcard == true);
+
+            yield return CardSystem.Instance.dicardCard(cardview);
+
+
             //Once all actions or "effects" are done, run this same StartTurn method
-            CardSystem.Instance.dicardCard(cardview);
             //With the opposite boolean
+            yield return EnemyTurn();
         }
         else
         {
@@ -45,7 +63,7 @@ public class TurnSystem : CardSystem
 
     public IEnumerator EnemyTurn()
     {
-
+        Debug.Log("My turn");
         yield return CardSystem.Instance.DrawCards();
 
         EnemyAttack enemAttack = new EnemyAttack(card);
