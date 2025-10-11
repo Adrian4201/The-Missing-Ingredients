@@ -9,69 +9,110 @@ public class TurnSystem : MonoBehaviour
     private Cards card;
 
     private CardDescriptions cardview;
+
     private Playcard Card;
 
     [SerializeField] private CardSystem cardSystem;
 
-    public bool canplay = true;
+    private enum TurnState { PlayerTurn, EnemyTurn, GameOver }
+
+    private TurnState currentTurn = TurnState.PlayerTurn;
+
+    private System.Action onCardPlayedCallback;
+
+    public bool canplay = false;
 
     private bool playedcard = false;
     // Have player draw 2 cards
 
     private void Start()
     {
-        StartCoroutine(StartTurn(true));
+        StartCoroutine(StartTurn());
+        
     }
 
-    public IEnumerator StartTurn(bool turn)
+    public IEnumerator StartTurn()
     {
-       
+        Debug.Log("Start() called");
+
         Debug.Log("Player turn");
-        if(turn)
-        {
-            //Player's turn
-            for (int i = 0; i < 2; i++)
+        while(currentTurn != TurnState.GameOver)
+        { 
+            if(currentTurn == TurnState.PlayerTurn)
             {
-                yield return CardSystem.Instance.DrawCards();
+                //Player's turn
+                canplay = true;
+                playedcard = false;
+
+                if (!canplay)
+                {
+                    yield break;
+                }
+                //Player draw card method
+                DrawCard draw = new(2);
+                ActionSystem.Instance.Preform(draw);
+
+
+
+
+
+                //Don't do anything else until player plays a card
+                yield return new WaitUntil(() => !ActionSystem.Instance.Isperforming);
+                onCardPlayedCallback = () => { playedcard = true; Debug.Log("Card played—unblocking turn!"); };
+                yield return new WaitUntil(() => playedcard);
+                if (cardview != null)
+                {
+                    yield return CardSystem.Instance.dicardCard(cardview);
+
+                }
+                else
+                {
+                    Debug.LogWarning("cardview is null cant discard");
+
+                }
+
+
+
+                //Once all actions or "effects" are done, run this same StartTurn method
+                //With the opposite boolean
+                currentTurn = TurnState.EnemyTurn;
             }
-            
+            else if (currentTurn == TurnState.EnemyTurn)
+            {
+                Debug.Log("enemyturn");
+                //Opponent turn
+                canplay = false;
 
+                DrawCard enemydraw = new(1);
+               ActionSystem.Instance.Preform(enemydraw);
+                yield return new WaitUntil(() => !ActionSystem.Instance.Isperforming);
 
-            canplay = true;
-            playedcard = false;
-            //Player draw card method
-           
-            //Don't do anything else until player plays a card
+                if (CardSystem.Instance.Hand.Count > 0)
+                {
+                    card = CardSystem.Instance.Hand[0];
+                    Debug.Log("Enemy picked up card" + card.Title);
+                }
+                else
+                {
+                    Debug.LogError("no cards for enemy!");
+                }
+                EnemyAttack enemAttack = new(card);
+                ActionSystem.Instance.AddAction(enemAttack);
+                ActionSystem.Instance.Preform(enemAttack);
 
-            yield return new WaitUntil(() => playedcard == true);
+                yield return new WaitUntil(() => !ActionSystem.Instance.Isperforming);
+                currentTurn = TurnState.PlayerTurn;
+            }
+            yield return new WaitForSeconds(0.5f);
+        
 
-            yield return CardSystem.Instance.dicardCard(cardview);
-
-
-            //Once all actions or "effects" are done, run this same StartTurn method
-            //With the opposite boolean
-            yield return EnemyTurn();
-        }
-        else
-        {
-            //Opponent turn
-            StartCoroutine(EnemyTurn());
         }
 
         
     }
 
-    public IEnumerator EnemyTurn()
-    {
-        Debug.Log("My turn");
-        yield return CardSystem.Instance.DrawCards();
-
-        EnemyAttack enemAttack = new EnemyAttack(card);
-
-        ActionSystem.Instance.AddAction(enemAttack);
-
-        StartTurn(canplay);
-    }
+    
+   
     public void CardEffectPerformer(bool hasPerformed)
     {
         if (hasPerformed)

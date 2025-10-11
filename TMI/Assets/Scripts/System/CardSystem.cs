@@ -12,7 +12,7 @@ public class CardSystem : Singleton<CardSystem>
     //list for deck
     private readonly List<Cards> drawpile = new();
     private readonly List<Cards> Discardpile = new();
-    private readonly List<Cards> Hand = new();
+    public readonly List<Cards> Hand = new();
     private void OnEnable()
     {
 
