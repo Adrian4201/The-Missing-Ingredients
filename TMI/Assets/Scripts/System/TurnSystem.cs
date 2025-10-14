@@ -19,7 +19,7 @@ public class TurnSystem : MonoBehaviour
     private TurnState currentTurn = TurnState.PlayerTurn;
 
     private System.Action onCardPlayedCallback;
-
+    
     public bool canplay = false;
 
     private bool playedcard = false;
@@ -60,6 +60,7 @@ public class TurnSystem : MonoBehaviour
                 yield return new WaitUntil(() => !ActionSystem.Instance.Isperforming);
                 onCardPlayedCallback = () => { playedcard = true; Debug.Log("Card played—unblocking turn!"); };
                 yield return new WaitUntil(() => playedcard);
+                Debug.Log("reached");
                 if (cardview != null)
                 {
                     yield return CardSystem.Instance.dicardCard(cardview);

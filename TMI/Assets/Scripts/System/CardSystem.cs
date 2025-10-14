@@ -108,7 +108,7 @@ public class CardSystem : Singleton<CardSystem>
     private void RefillDeck()
     {
         drawpile.AddRange(Discardpile);
-        drawpile.Clear();
+        Discardpile.Clear();
     }
 
     //not working
