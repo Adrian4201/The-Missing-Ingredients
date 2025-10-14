@@ -80,27 +80,11 @@ public class TurnSystem : MonoBehaviour
             else if (currentTurn == TurnState.EnemyTurn)
             {
                 Debug.Log("enemyturn");
-                //Opponent turn
                 canplay = false;
 
-                DrawCard enemydraw = new(1);
-               ActionSystem.Instance.Preform(enemydraw);
-                yield return new WaitUntil(() => !ActionSystem.Instance.Isperforming);
+                Enemyturn enemyTurnAction = new Enemyturn();
+                yield return StartCoroutine(enemyTurnAction.ExecuteEnemyTurn());
 
-                if (CardSystem.Instance.Hand.Count > 0)
-                {
-                    card = CardSystem.Instance.Hand[0];
-                    Debug.Log("Enemy picked up card" + card.Title);
-                }
-                else
-                {
-                    Debug.LogError("no cards for enemy!");
-                }
-                EnemyAttack enemAttack = new(card);
-                ActionSystem.Instance.AddAction(enemAttack);
-                ActionSystem.Instance.Preform(enemAttack);
-
-                yield return new WaitUntil(() => !ActionSystem.Instance.Isperforming);
                 currentTurn = TurnState.PlayerTurn;
             }
             yield return new WaitForSeconds(0.5f);
