@@ -125,6 +125,11 @@ public class CardSystem : Singleton<CardSystem>
         Hand.Remove(playCard.card);
         CardDescriptions cardview = handdetails.RemoveCard(playCard.card);
         yield return dicardCard(cardview);
+        TurnSystem turnSystem = FindObjectOfType<TurnSystem>();
+        if (turnSystem != null)
+        {
+            turnSystem.NotifyCardPlayed();
+        }
     }
     public IEnumerator Dealdamageperformer(Dealdamage damage)
     {

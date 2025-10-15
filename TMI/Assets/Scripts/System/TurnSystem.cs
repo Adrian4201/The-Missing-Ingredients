@@ -95,9 +95,22 @@ public class TurnSystem : MonoBehaviour
 
         
     }
+    public void NotifyCardPlayed()
+    {
+        if (onCardPlayedCallback != null)
+        {
+            onCardPlayedCallback.Invoke();
+            onCardPlayedCallback = null; // Prevent double-calls
+            Debug.Log("TurnSystem: Card played callback invoked");
+        }
+        else
+        {
+            Debug.LogWarning("TurnSystem: No callback registered for card play");
+        }
+    }
 
-    
-   
+
+
     public void CardEffectPerformer(bool hasPerformed)
     {
         if (hasPerformed)
