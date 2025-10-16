@@ -86,9 +86,15 @@ public class TurnSystem : MonoBehaviour
                 Debug.Log("enemyturn");
                 canplay = false;
 
+                onCardPlayedCallback = () => {
+                    Debug.Log("Enemy card played—proceeding with turn!");  // You can customize this if needed
+                    // If you want to add more logic, like advancing the turn, do it here
+                };
+
                 Enemyturn enemyTurnAction = new Enemyturn();
                 yield return StartCoroutine(enemyTurnAction.ExecuteEnemyTurn());
 
+                onCardPlayedCallback = null;
                 currentTurn = TurnState.PlayerTurn;
             }
             yield return new WaitForSeconds(0.5f);
