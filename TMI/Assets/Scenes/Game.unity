@@ -487,8 +487,6 @@ MonoBehaviour:
   Slots:
   - {fileID: 438742741}
   - {fileID: 438742741}
-  - {fileID: 438742741}
-  - {fileID: 438742741}
 --- !u!1 &1084155072
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,53 +723,53 @@ MonoBehaviour:
       TangentIn:
         x: -0
         y: -0
-        z: -1.0619216
+        z: -0
       TangentOut:
         x: 0
         y: 0
-        z: 1.0619216
+        z: 0
       Rotation:
         value:
-          x: -0.58685225
-          y: 0.39446726
-          z: -0.39446718
-          w: 0.5868523
+          x: -0.70710665
+          y: 0
+          z: 0.00000008429369
+          w: 0.7071068
     - Position:
-        x: 9.833138
-        y: 4.0096292
+        x: 0
+        y: 0
         z: 0
       TangentIn:
         x: -0
         y: -0
-        z: -3.2991142
+        z: -0
       TangentOut:
         x: 0
         y: 0
-        z: 3.3511312
+        z: 0
       Rotation:
         value:
-          x: -0.49921608
-          y: 0.50078267
-          z: -0.5007827
-          w: 0.4992161
+          x: -0.70710665
+          y: 2.5121475e-15
+          z: 0.00000004214684
+          w: 0.7071068
     - Position:
-        x: 19.952677
-        y: -0.19093466
+        x: 0
+        y: 0
         z: 0
       TangentIn:
         x: -0
         y: -0
-        z: -1.0956724
+        z: -0
       TangentOut:
         x: 0
         y: 0
-        z: 1.0956724
+        z: 0
       Rotation:
         value:
-          x: 0.39262658
-          y: -0.5880854
-          z: 0.5880854
-          w: -0.39262643
+          x: -0.70710665
+          y: 1.2560737e-15
+          z: -0.00000004214685
+          w: 0.7071069
     m_MetaData:
     - Mode: 0
       Tension: 0.5
@@ -1187,8 +1185,6 @@ MonoBehaviour:
   enemyDatas:
   - {fileID: 11400000, guid: 26932a5b677d82f4b9939ff116d2a6ee, type: 2}
   - {fileID: 11400000, guid: 26932a5b677d82f4b9939ff116d2a6ee, type: 2}
-  - {fileID: 11400000, guid: 26932a5b677d82f4b9939ff116d2a6ee, type: 2}
-  - {fileID: 11400000, guid: 26932a5b677d82f4b9939ff116d2a6ee, type: 2}
   cardData:
   - {fileID: 11400000, guid: 9b3fc289a857ffd4483f8a88e4c44aeb, type: 2}
   - {fileID: 11400000, guid: 9b3fc289a857ffd4483f8a88e4c44aeb, type: 2}
@@ -1551,19 +1547,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5296962897429922474, guid: dfeee1b08d82db646b9685af9a9e7cf7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 1058672784677783997, guid: dfeee1b08d82db646b9685af9a9e7cf7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 6926815343849110669, guid: dfeee1b08d82db646b9685af9a9e7cf7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 5319176259747772151, guid: dfeee1b08d82db646b9685af9a9e7cf7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfeee1b08d82db646b9685af9a9e7cf7, type: 3}
 --- !u!4 &1967684402 stripped
 Transform:

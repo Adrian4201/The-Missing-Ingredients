@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9ceb8eac7585b542a134983655ca7ee, type: 3}
   m_Name: New Enemy Data
   m_EditorClassIdentifier: 
-  <Image>k__BackingField: {fileID: 21300000, guid: 87556dbf7d3b17843b7e9129dc442a00, type: 3}
+  <Image>k__BackingField: {fileID: 21300000, guid: 4ad92f40c2308674686d2f9c434b9d09, type: 3}
   <Health>k__BackingField: 12
   <Attackpower>k__BackingField: 0
   <Card>k__BackingField: {fileID: 11400000, guid: a50675c3af507b24c8d3a8dbb2130f03, type: 2}

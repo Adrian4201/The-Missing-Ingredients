@@ -124,12 +124,17 @@ public class CardSystem : Singleton<CardSystem>
     {
         Hand.Remove(playCard.card);
         CardDescriptions cardview = handdetails.RemoveCard(playCard.card);
-        yield return dicardCard(cardview);
+
+        // Notify TurnSystem, but don't discard here
         TurnSystem turnSystem = FindObjectOfType<TurnSystem>();
         if (turnSystem != null)
         {
-            turnSystem.NotifyCardPlayed();
+            turnSystem.SetPlayedCard(playCard.card, cardview);  // Ensure cardview is set
+            turnSystem.NotifyCardPlayed();  // This just sets playedcard to true
         }
+
+        // Do NOT call yield return dicardCard(cardview); here
+        yield break;  // Exit early
     }
     public IEnumerator Dealdamageperformer(Dealdamage damage)
     {

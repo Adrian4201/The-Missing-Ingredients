@@ -58,7 +58,10 @@ public class TurnSystem : MonoBehaviour
 
                 //Don't do anything else until player plays a card
                 yield return new WaitUntil(() => !ActionSystem.Instance.Isperforming);
-                onCardPlayedCallback = () => { playedcard = true; Debug.Log("Card played—unblocking turn!"); };
+                onCardPlayedCallback = () => {
+                    playedcard = true; 
+                    Debug.Log("Card played—unblocking turn!"); 
+                };
                 yield return new WaitUntil(() => playedcard);
                 Debug.Log("reached");
                 if (cardview != null)
@@ -110,7 +113,12 @@ public class TurnSystem : MonoBehaviour
     }
 
 
-
+    public void SetPlayedCard(Cards playedCard, CardDescriptions playedCardView)
+    {
+        card = playedCard;
+        cardview = playedCardView;
+        Debug.Log("SetPlayedCard called: cardview is now set.");  // Add this for debugging
+    }
     public void CardEffectPerformer(bool hasPerformed)
     {
         if (hasPerformed)
