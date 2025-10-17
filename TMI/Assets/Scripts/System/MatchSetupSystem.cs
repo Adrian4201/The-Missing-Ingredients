@@ -6,12 +6,14 @@ public class MatchSetupSystem : MonoBehaviour
 {
     [SerializeField] private List<EnemyData> enemyDatas;
 
-    [SerializeField] private List<CardData> cardData;
+    [SerializeField] private PlayerData playerDatas;
     private void Start()
     {
-        CardSystem.Instance.Setup(cardData);
-
+        HeroSystem.Instance.Setup(playerDatas);
+        
         EnemySystem.Instance.SetUp(enemyDatas);
+        
+        CardSystem.Instance.Setup(playerDatas.Deck);
 
         DrawCard card = new(2);
 

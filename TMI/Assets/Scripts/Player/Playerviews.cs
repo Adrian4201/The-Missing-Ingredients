@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Playerviews : Combatantviews
 {
-   public void setup()
+   public void setup(PlayerData data)
     {
-        setupBase(40, null);
+        setupBase(data.Health, data.Image);
     }
 }

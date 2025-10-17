@@ -5,34 +5,37 @@ public class CardDescriptions : MonoBehaviour
 {
     [Header("Card Elements")]
     [SerializeField] private TMP_Text Title;
-
     [SerializeField] private TMP_Text Damage;
-
     [SerializeField] private TMP_Text Description;
 
     //[SerializeField] private TMP_Text RarityText;   //  NEW
     [SerializeField] private SpriteRenderer imageS;
-
     [SerializeField] private SpriteRenderer cardBackground;
-
     [SerializeField] private GameObject wrapper;
-
     [SerializeField] private LayerMask DropArea;
 
     public Cards Card { get; private set; }
-
     private Vector3 DragStartPos;
     public Quaternion DragRotation;
 
     public void Setup(Cards card)
     {
+        if(card == null)
+        {
+            Debug.LogError("Card is null!!");
+            return;
+        }
         Card = card;
 
         // Fill in card content
-        Title.text = card.Title;
-        Description.text = card.Description;
-        Damage.text = card.Damage.ToString();
-        imageS.sprite = card.Image;
+        if (Title != null) Title.text = card.Title;
+        else Debug.LogError("Title is not assigned in CardDescriptions!");
+        if (Description != null) Description.text = card.Description;
+        else Debug.LogError("Description is not assigned in CardDescriptions!");
+        if (Damage != null) Damage.text = card.Damage.ToString();
+        else Debug.LogError("Damage is not assigned in CardDescriptions!");
+        if (imageS != null) imageS.sprite = card.Image;
+        else Debug.LogError("imageS is not assigned in CardDescriptions!");
 
         //  Apply type color (for damage + background)
         if (CardColorMap.Colors.TryGetValue(card.Color, out var typeColor))
