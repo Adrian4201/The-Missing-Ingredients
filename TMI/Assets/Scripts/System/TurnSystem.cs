@@ -24,7 +24,15 @@ public class TurnSystem : MonoBehaviour
 
     private bool playedcard = false;
     // Have player draw 2 cards
+    private void OnEnable()
+    {
+        
+    }
 
+    private void OnDisable()
+    {
+        
+    }
     private void Start()
     {
         StartCoroutine(StartTurn());
@@ -45,13 +53,15 @@ public class TurnSystem : MonoBehaviour
                 playedcard = false;
 
             
+                DrawCard draw = new(2);
+                ActionSystem.Instance.Preform(draw);
                 onCardPlayedCallback = () => {
-                    playedcard = true; 
+                    playedcard = true;
+                    CardSystem.Instance.dicardCard(cardview);
+                    //Destroy(cardview.gameObject);
                     Debug.Log("Card played—unblocking turn!"); 
                 };
                 //Player draw card method
-                DrawCard draw = new(2);
-                ActionSystem.Instance.Preform(draw);
 
 
 
@@ -60,12 +70,11 @@ public class TurnSystem : MonoBehaviour
                 //Don't do anything else until player plays a card
                 yield return new WaitUntil(() => !ActionSystem.Instance.Isperforming);
                 yield return new WaitUntil(() => playedcard);
-
+                canplay = false;
                 Debug.Log("reached");
                 if (cardview != null)
                 {
                     yield return CardSystem.Instance.dicardCard(cardview);
-                    Destroy(cardview.gameObject);
                     cardview = null;
                     Debug.Log("Card discarded and destroyed.");
                 }

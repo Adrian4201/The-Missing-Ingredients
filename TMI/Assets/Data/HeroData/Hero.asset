@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Hero
   m_EditorClassIdentifier: 
   <Image>k__BackingField: {fileID: 21300000, guid: 4355836fc772eb14ca9a3ab3931b0f8e, type: 3}
-  <Health>k__BackingField: 50
+  <Health>k__BackingField: 30
   <Deck>k__BackingField:
   - {fileID: 11400000, guid: e90df0477005f6643bfedd56e20163ae, type: 2}
-  - {fileID: 11400000, guid: e90df0477005f6643bfedd56e20163ae, type: 2}
-  - {fileID: 11400000, guid: e90df0477005f6643bfedd56e20163ae, type: 2}
-  - {fileID: 11400000, guid: e90df0477005f6643bfedd56e20163ae, type: 2}
-  - {fileID: 11400000, guid: e90df0477005f6643bfedd56e20163ae, type: 2}
-  - {fileID: 11400000, guid: e90df0477005f6643bfedd56e20163ae, type: 2}
+  - {fileID: 11400000, guid: 4755c97d158b9814f8f2848f0e87db6d, type: 2}
+  - {fileID: 11400000, guid: 6d9f3b684600f0d498147e062abc9bee, type: 2}
+  - {fileID: 11400000, guid: 8bab187b09f93444bbd5cd2f901d7ba1, type: 2}
+  - {fileID: 11400000, guid: 91eb55074f3d662418f1a3052e288396, type: 2}
+  - {fileID: 11400000, guid: f2886987883ea9b4f8143eeb3e032df2, type: 2}

@@ -8,7 +8,7 @@ public class Enemyturn : GameAction
     {
         Debug.Log("EnemyTurn ExecuteEnemyTurn method started");
         // Draw a card for the enemy
-        DrawCard enemydraw = new DrawCard(1);
+        DrawCard enemydraw = new DrawCard(0);
         ActionSystem.Instance.Preform(enemydraw);
         yield return new WaitUntil(() => !ActionSystem.Instance.Isperforming);
         if (CardSystem.Instance.Hand.Count > 0)

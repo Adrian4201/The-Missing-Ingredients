@@ -149,8 +149,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 13.79, y: 7.9, z: 8.81}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 35.784176, y: 25.4, z: 22.861393}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6329230637508619015}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -290,8 +290,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5008162930999156071}
-  - component: {fileID: 7806833256233643827}
+  - component: {fileID: 3183143040277447048}
   - component: {fileID: -4990861377316938179}
+  - component: {fileID: 8794924589500828944}
   m_Layer: 0
   m_Name: Enemyview
   m_TagString: Untagged
@@ -315,7 +316,7 @@ Transform:
   - {fileID: 6329230637508619015}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7806833256233643827
+--- !u!114 &3183143040277447048
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -346,6 +347,27 @@ MonoBehaviour:
   healthBar: {fileID: 8424306140066384841}
   combatView: {fileID: 3086679080709964601}
   spriteRenderer: {fileID: 21300000, guid: 4ad92f40c2308674686d2f9c434b9d09, type: 3}
+--- !u!65 &8794924589500828944
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2350452631605924171}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3023953783068395818
 GameObject:
   m_ObjectHideFlags: 0

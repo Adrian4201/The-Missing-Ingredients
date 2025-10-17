@@ -21,10 +21,10 @@ public class CardSystem : Singleton<CardSystem>
         ActionSystem.Attachperformmer<Playcard>(PlayCardPerformer);
         ActionSystem.Attachperformmer<Dealdamage>(Dealdamageperformer);
         ActionSystem.Attachperformmer<EnemyAttack>(EnemyAttackPerformer);
-        Debug.Log("We work");
+        
         ActionSystem.SubscribeReaction<Enemyturn>(EnemyturnReact, ReactionTiming.PRE);
         ActionSystem.SubscribeReaction<Enemyturn>(PostEnemyturnReact, ReactionTiming.POST);
-        Debug.Log("So do wee!!!");
+       
 
     }
     private void OnDisable()
@@ -34,7 +34,7 @@ public class CardSystem : Singleton<CardSystem>
         ActionSystem.Dettachperformer<Playcard>();
         ActionSystem.Dettachperformer<Dealdamage>();
         ActionSystem.Dettachperformer<EnemyAttack>();
-        Debug.Log("we off");
+        
         ActionSystem.UnSubscribeReaction<Enemyturn>(EnemyturnReact, ReactionTiming.PRE);
         ActionSystem.UnSubscribeReaction<Enemyturn>(PostEnemyturnReact, ReactionTiming.POST);
     }
@@ -57,13 +57,13 @@ public class CardSystem : Singleton<CardSystem>
 
         for(int i = 0; i < CardAmount; i++)
         {
-            Debug.Log("i might be being drawn");
+           
             yield return DrawCards();
         }
         if(notDrawn > 0)
         {
             //potientail prob
-            Debug.Log("fill her up");
+            
             RefillDeck();
             for(int i = 0; i < notDrawn; i++)
             {
@@ -76,11 +76,15 @@ public class CardSystem : Singleton<CardSystem>
     {
         foreach(var card in Hand)
         {
+            Debug.Log("Discardperformer Check?");
             Discardpile.Add(card);
-            CardDescriptions cardview =handdetails.RemoveCard(card);
+            CardDescriptions cardview = handdetails.RemoveCard(card);
             yield return dicardCard(cardview);
+
         }
+
         Debug.Log("hand clearded");
+
         Hand.Clear();
 
     }
@@ -114,16 +118,17 @@ public class CardSystem : Singleton<CardSystem>
     //not working
     public IEnumerator dicardCard(CardDescriptions cardview)
     {
-        Debug.Log("working son");
         cardview.transform.DOScale(Vector3.zero, 0.15f);
         Tween tween = cardview.transform.DOMove(Discardpoint.position, 0.15f);
         yield return tween.WaitForCompletion();
         Destroy(cardview.gameObject);
+        Debug.Log("working son");
     }
     public IEnumerator PlayCardPerformer(Playcard playCard)
     {
         Hand.Remove(playCard.card);
         CardDescriptions cardview = handdetails.RemoveCard(playCard.card);
+        Debug.Log("Card has been play)");
 
         // Notify TurnSystem, but don't discard here
         TurnSystem turnSystem = FindObjectOfType<TurnSystem>();
