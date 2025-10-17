@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class DiscardCardsGa : GameAction
 {
-    // Start is called before the first frame update
+    
     
 }
