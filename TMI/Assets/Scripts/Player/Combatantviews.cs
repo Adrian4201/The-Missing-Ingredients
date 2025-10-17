@@ -11,16 +11,16 @@ public class Combatantviews : MonoBehaviour
 
     [SerializeField] private SpriteRenderer spriteRenderer;
 
-    public int Maxhealth {  get; private set; }
+    public int Maxhealth { get; private set; }
     public int CurrentHealth { get; private set; }
     public void setupBase(int health, Sprite image)
     {
-        if(spriteRenderer == null)
+        if (spriteRenderer == null)
         {
             Debug.Log("sprite render is not assigned");
             return;
         }
-        Maxhealth = CurrentHealth + health; 
+        Maxhealth = CurrentHealth + health;
         spriteRenderer.sprite = image;
         updateBase(health);
     }
@@ -34,5 +34,14 @@ public class Combatantviews : MonoBehaviour
         }
         CurrentHealth = health;
         healhText.value = CurrentHealth;
+    }
+    public void Damage(int damageAmount)
+    {
+        CurrentHealth -= damageAmount;
+        if (CurrentHealth < 0)
+        {
+            CurrentHealth = 0;
+        }
+        updateBase(CurrentHealth);
     }
 }

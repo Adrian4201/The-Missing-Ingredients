@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class EnemySystem : Singleton<EnemySystem>
@@ -7,11 +8,14 @@ public class EnemySystem : Singleton<EnemySystem>
     [SerializeField] private EnemyBoardview enemyBoardview;
     private void OnEnable()
     {
-        ActionSystem.Attachperformmer<Enemyturn>(EnremyTurnperformer);
+        //ActionSystem.Attachperformmer<Enemyturn>(EnremyTurnperformer);
+        ActionSystem.Attachperformmer<AttackHero>(AttackHeroPerformer);
     }
     private void OnDisable()
     {
         ActionSystem.Dettachperformer<Enemyturn>();
+        ActionSystem.Dettachperformer<AttackHero>();
+
     }
     public void SetUp(List<EnemyData> enemydatas)
     {
@@ -20,7 +24,7 @@ public class EnemySystem : Singleton<EnemySystem>
             enemyBoardview.AddEnemy(enemydata);
         }
     }
-    private IEnumerator EnremyTurnperformer(Enemyturn enemyturn)
+    /*private IEnumerator EnremyTurnperformer(Enemyturn enemyturn)
     {
         DrawCard enemydraw = new DrawCard(1);
         ActionSystem.Instance.Preform(enemydraw);
@@ -44,4 +48,14 @@ public class EnemySystem : Singleton<EnemySystem>
 
         Debug.Log("Enemy turn completed");
     }
+    */
+    public IEnumerator AttackHeroPerformer(AttackHero attackhero)
+    {
+        Enemyview attacker = attackhero.Attacker;
+        Tween tween = attacker.transform.DOMoveX(attacker.transform.position.x - 1f, 0.15f);
+        yield return tween.WaitForCompletion();
+        Dealdamage dealDamage = new(attacker.attackPower, new(){HeroSystem.Instance.Hero});
+        ActionSystem.Instance.AddAction(dealDamage);
+    }
+
 }

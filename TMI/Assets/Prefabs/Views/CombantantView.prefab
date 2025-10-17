@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healhText: {fileID: 2991054924285278928}
-  spriteRenderer: {fileID: 8982837980088560677}
+  spriteRenderer: {fileID: 0}
 --- !u!1 &7089734299800925694
 GameObject:
   m_ObjectHideFlags: 0

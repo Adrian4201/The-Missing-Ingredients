@@ -291,6 +291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5008162930999156071}
   - component: {fileID: 7806833256233643827}
+  - component: {fileID: -4990861377316938179}
   m_Layer: 0
   m_Name: Enemyview
   m_TagString: Untagged
@@ -308,7 +309,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.4, y: 0.8, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.07, z: 1}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6329230637508619015}
@@ -328,6 +329,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healhText: {fileID: 5626446298516203448}
   spriteRenderer: {fileID: 1963015346713178445}
+--- !u!114 &-4990861377316938179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2350452631605924171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f8a3d79afd8854a8c18a1c4b491edb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 40
+  CurrentHealth: 40
+  healthBar: {fileID: 8424306140066384841}
+  combatView: {fileID: 3086679080709964601}
+  spriteRenderer: {fileID: 21300000, guid: 4ad92f40c2308674686d2f9c434b9d09, type: 3}
 --- !u!1 &3023953783068395818
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,4 +10,6 @@ public abstract class GameAction
     public List<GameAction> PostReaction {  get; private set; } = new();
 
     public List<GameAction> PerformCardEffect {  get; private set; } = new();
+
+
 }

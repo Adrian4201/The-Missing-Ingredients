@@ -44,10 +44,11 @@ public class TurnSystem : MonoBehaviour
                 canplay = true;
                 playedcard = false;
 
-                if (!canplay)
-                {
-                    yield break;
-                }
+            
+                onCardPlayedCallback = () => {
+                    playedcard = true; 
+                    Debug.Log("Card played—unblocking turn!"); 
+                };
                 //Player draw card method
                 DrawCard draw = new(2);
                 ActionSystem.Instance.Preform(draw);
@@ -58,16 +59,15 @@ public class TurnSystem : MonoBehaviour
 
                 //Don't do anything else until player plays a card
                 yield return new WaitUntil(() => !ActionSystem.Instance.Isperforming);
-                onCardPlayedCallback = () => {
-                    playedcard = true; 
-                    Debug.Log("Card played—unblocking turn!"); 
-                };
                 yield return new WaitUntil(() => playedcard);
+
                 Debug.Log("reached");
                 if (cardview != null)
                 {
                     yield return CardSystem.Instance.dicardCard(cardview);
-
+                    Destroy(cardview.gameObject);
+                    cardview = null;
+                    Debug.Log("Card discarded and destroyed.");
                 }
                 else
                 {
@@ -97,7 +97,7 @@ public class TurnSystem : MonoBehaviour
                 onCardPlayedCallback = null;
                 currentTurn = TurnState.PlayerTurn;
             }
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(3f);
         
 
         }
@@ -125,7 +125,8 @@ public class TurnSystem : MonoBehaviour
         cardview = playedCardView;
         Debug.Log("SetPlayedCard called: cardview is now set.");  // Add this for debugging
     }
-    public void CardEffectPerformer(bool hasPerformed)
+    
+    /*public void CardEffectPerformer(bool hasPerformed)
     {
         if (hasPerformed)
         {
@@ -133,6 +134,7 @@ public class TurnSystem : MonoBehaviour
         }CardEffectPerformer(false);
 
     }
+    */
 
    
 

@@ -7,9 +7,11 @@ public class Dealdamage : GameAction
     // Start is called before the first frame update
     public int Damage;
     public HealthTracker Target { get; private set; }
-    public Dealdamage(int damage, HealthTracker target)
+    public List<Combatantviews> Targets {  get; set; }
+    public Dealdamage(int damage, List<Combatantviews> targets)
     {
         Damage = damage;
-        Target = target;
+        Targets = targets;
     }
+    
 }
