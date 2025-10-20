@@ -32,6 +32,7 @@ public class TurnSystem : MonoBehaviour
     private void OnDisable()
     {
         
+
     }
     private void Start()
     {
@@ -71,6 +72,10 @@ public class TurnSystem : MonoBehaviour
                 yield return new WaitUntil(() => !ActionSystem.Instance.Isperforming);
                 yield return new WaitUntil(() => playedcard);
                 canplay = false;
+                if (!canplay)
+                {
+
+                }
                 Debug.Log("reached");
                 if (cardview != null)
                 {
@@ -113,6 +118,7 @@ public class TurnSystem : MonoBehaviour
 
         
     }
+    
     public void NotifyCardPlayed()
     {
         if (onCardPlayedCallback != null)

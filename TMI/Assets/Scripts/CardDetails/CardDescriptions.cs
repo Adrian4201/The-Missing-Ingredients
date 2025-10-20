@@ -17,7 +17,7 @@ public class CardDescriptions : MonoBehaviour
     public Cards Card { get; private set; }
     private Vector3 DragStartPos;
     public Quaternion DragRotation;
-
+    
     public void Setup(Cards card)
     {
         if(card == null)
