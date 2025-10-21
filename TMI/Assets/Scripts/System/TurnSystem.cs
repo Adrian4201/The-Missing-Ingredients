@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurnSystem : MonoBehaviour
+public class TurnSystem : Singleton<TurnSystem>
 {
     // Start is called before the first frame update
 
