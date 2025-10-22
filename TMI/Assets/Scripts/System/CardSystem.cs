@@ -74,18 +74,44 @@ public class CardSystem : Singleton<CardSystem>
     //works fine
     private IEnumerator Discardpreformer(DiscardCardsGa Discardperformer)
     {
-        foreach(var card in Hand)
-        {
-            Debug.Log("Discardperformer Check?");
-            Discardpile.Add(card);
-            CardDescriptions cardview = handdetails.RemoveCard(card);
-            yield return dicardCard(cardview);
+        Debug.Log("Discardpreformer started");
+        Debug.Log("Cards in hand: " + Hand.Count);
 
+        // Copy to avoid collection modification issues
+        var cardsToDiscard = new List<Cards>(Hand);
+
+        foreach (var card in cardsToDiscard)
+        {
+            if (card == null)
+            {
+                Debug.LogWarning("Found null card in hand");
+                continue;
+            }
+
+            Debug.Log("Discarding card: " + card.Title);
+
+            // Move data into discard pile
+            Discardpile.Add(card);
+
+            // Remove from UI hand and get its card view
+            CardDescriptions cardView = handdetails.RemoveCard(card);
+
+            if (cardView != null)
+            {
+                Debug.Log("Found cardView for " + card.Title + ", animating discard");
+                yield return dicardCard(cardView);
+            }
+            else
+            {
+                Debug.LogWarning("CardView was null for " + card.Title + ", destroying manually");
+            }
         }
 
-        Debug.Log("hand clearded");
-
+        // Now actually clear the hand data
         Hand.Clear();
+
+        Debug.Log("Discardpreformer finished");
+        Debug.Log("Discard pile count: " + Discardpile.Count);
 
     }
     //reaction
@@ -126,6 +152,12 @@ public class CardSystem : Singleton<CardSystem>
     }
     public IEnumerator PlayCardPerformer(Playcard playCard)
     {
+        if (!TurnSystem.Instance.canplay)
+        {
+            Debug.LogWarning("Blocked card play — not player's turn!");
+            yield break;
+        }
+
         Hand.Remove(playCard.card);
         CardDescriptions cardview = handdetails.RemoveCard(playCard.card);
         Debug.Log("Card has been play)");
@@ -157,5 +189,6 @@ public class CardSystem : Singleton<CardSystem>
         Playcard playAction = new Playcard(attack.cardS);
         yield return PlayCardPerformer(playAction);
     }
+    
 
 }

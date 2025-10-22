@@ -24,16 +24,7 @@ public class TurnSystem : Singleton<TurnSystem>
 
     private bool playedcard = false;
     // Have player draw 2 cards
-    private void OnEnable()
-    {
-        
-    }
-
-    private void OnDisable()
-    {
-        
-
-    }
+ 
     private void Start()
     {
         StartCoroutine(StartTurn());
@@ -79,8 +70,11 @@ public class TurnSystem : Singleton<TurnSystem>
                 Debug.Log("reached");
                 if (cardview != null)
                 {
-                    yield return CardSystem.Instance.dicardCard(cardview);
+                    DiscardCardsGa discardAction = new DiscardCardsGa();
+                    ActionSystem.Instance.Preform(discardAction);
+                    yield return new WaitUntil(() => !ActionSystem.Instance.Isperforming);
                     cardview = null;
+                    card = null;
                     Debug.Log("Card discarded and destroyed.");
                 }
                 else
