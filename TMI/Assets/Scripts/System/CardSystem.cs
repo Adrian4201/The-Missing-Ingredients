@@ -74,44 +74,18 @@ public class CardSystem : Singleton<CardSystem>
     //works fine
     private IEnumerator Discardpreformer(DiscardCardsGa Discardperformer)
     {
-        Debug.Log("Discardpreformer started");
-        Debug.Log("Cards in hand: " + Hand.Count);
-
-        // Copy to avoid collection modification issues
-        var cardsToDiscard = new List<Cards>(Hand);
-
-        foreach (var card in cardsToDiscard)
+        foreach(var card in Hand)
         {
-            if (card == null)
-            {
-                Debug.LogWarning("Found null card in hand");
-                continue;
-            }
-
-            Debug.Log("Discarding card: " + card.Title);
-
-            // Move data into discard pile
+            Debug.Log("Discardperformer Check?");
             Discardpile.Add(card);
+            CardDescriptions cardview = handdetails.RemoveCard(card);
+            yield return dicardCard(cardview);
 
-            // Remove from UI hand and get its card view
-            CardDescriptions cardView = handdetails.RemoveCard(card);
-
-            if (cardView != null)
-            {
-                Debug.Log("Found cardView for " + card.Title + ", animating discard");
-                yield return dicardCard(cardView);
-            }
-            else
-            {
-                Debug.LogWarning("CardView was null for " + card.Title + ", destroying manually");
-            }
         }
 
-        // Now actually clear the hand data
-        Hand.Clear();
+        Debug.Log("hand clearded");
 
-        Debug.Log("Discardpreformer finished");
-        Debug.Log("Discard pile count: " + Discardpile.Count);
+        Hand.Clear();
 
     }
     //reaction
