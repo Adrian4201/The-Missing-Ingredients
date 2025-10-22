@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyCardSystem : Singleton<CardSystem>
 {
+    [SerializeField] private Handdetails Enumhanddetails;
+    [SerializeField] private Transform ENumDrawpoint;
+    [SerializeField] private Transform EnumDiscardpoint;
     //list for 
     private readonly List<Cards> drawpile = new();
     private readonly List<Cards> Discardpile = new();
