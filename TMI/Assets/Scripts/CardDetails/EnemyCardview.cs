@@ -17,8 +17,7 @@ public class EnemyCardview : MonoBehaviour
     [SerializeField] private LayerMask DropArea;
 
     public Cards Card { get; private set; }
-    private Vector3 DragStartPos;
-    public Quaternion DragRotation;
+    
 
     public void Setup(Cards card)
     {

@@ -645,7 +645,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 761372508508398789}
-  - component: {fileID: -6263856741150186151}
+  - component: {fileID: 4207215842214244236}
   - component: {fileID: 1736247376628407384}
   - component: {fileID: 5954051390185868582}
   m_Layer: 0
@@ -671,7 +671,7 @@ Transform:
   - {fileID: 3432146250965005801}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-6263856741150186151
+--- !u!114 &4207215842214244236
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -686,13 +686,12 @@ MonoBehaviour:
   Title: {fileID: 3218252955406269942}
   Damage: {fileID: 7053205632334068723}
   Description: {fileID: 1239052424870864925}
-  imageS: {fileID: 0}
+  imageS: {fileID: 1925264634608772236}
   cardBackground: {fileID: 8447802513001172487}
   wrapper: {fileID: 1912201468195012648}
   DropArea:
     serializedVersion: 2
     m_Bits: 64
-  DragRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!210 &1736247376628407384
 SortingGroup:
   m_ObjectHideFlags: 0
