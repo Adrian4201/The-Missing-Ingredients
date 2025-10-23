@@ -9,7 +9,7 @@ public class TurnSystem : Singleton<TurnSystem>
     private Cards card;
 
     private CardDescriptions cardview;
-
+    private EnemyCardview enemyCardview;
     private Playcard Card;
 
     [SerializeField] private CardSystem cardSystem;
@@ -47,6 +47,7 @@ public class TurnSystem : Singleton<TurnSystem>
             
                 DrawCard draw = new(2);
                 ActionSystem.Instance.Preform(draw);
+
                 onCardPlayedCallback = () => {
                     playedcard = true;
                     CardSystem.Instance.dicardCard(cardview);
@@ -63,10 +64,7 @@ public class TurnSystem : Singleton<TurnSystem>
                 yield return new WaitUntil(() => !ActionSystem.Instance.Isperforming);
                 yield return new WaitUntil(() => playedcard);
                 canplay = false;
-                if (!canplay)
-                {
-
-                }
+                
                 Debug.Log("reached");
                 if (cardview != null)
                 {
@@ -134,7 +132,13 @@ public class TurnSystem : Singleton<TurnSystem>
         cardview = playedCardView;
         Debug.Log("SetPlayedCard called: cardview is now set.");  // Add this for debugging
     }
-    
+    public void EnSetPlayedCard(Cards playedCard, EnemyCardview Encardview )
+    {
+        card = playedCard;
+        enemyCardview = Encardview;
+        Debug.Log("SetPlayedCard called: cardview is now set.");  // Add this for debugging
+    }
+
     /*public void CardEffectPerformer(bool hasPerformed)
     {
         if (hasPerformed)
@@ -145,11 +149,11 @@ public class TurnSystem : Singleton<TurnSystem>
     }
     */
 
-   
 
-    
-    
 
-   
+
+
+
+
 
 }

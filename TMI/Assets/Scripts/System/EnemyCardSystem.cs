@@ -4,7 +4,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.XR;
 
-public class EnemyCardSystem : Singleton<CardSystem>
+public class EnemyCardSystem : Singleton<EnemyCardSystem>
 {
     [SerializeField] private EnemyHandView Enumhanddetails;
     [SerializeField] private Transform ENumDrawpoint;
@@ -17,12 +17,18 @@ public class EnemyCardSystem : Singleton<CardSystem>
     {
         ActionSystem.Attachperformmer<DrawCard>(EnemyDrawperformer);
         ActionSystem.Attachperformmer<DiscardCardsGa>(EnemyDiscardperformer);
+        ActionSystem.Attachperformmer<Playcard>(PlayCardPerformer);
+        ActionSystem.Attachperformmer<Dealdamage>(Dealdamageperformer);
+        ActionSystem.Attachperformmer<EnemyAttack>(EnemyAttackPerformer);
 
     }
     private void OnDisable()
     {
         ActionSystem.Dettachperformer<DrawCard>();
         ActionSystem.Dettachperformer<DiscardCardsGa>();
+        ActionSystem.Dettachperformer<Playcard>();
+        ActionSystem.Dettachperformer<Dealdamage>();
+        ActionSystem.Dettachperformer<EnemyAttack>();
     }
     public void Setup(List<CardData> deckData)
     {
@@ -33,7 +39,7 @@ public class EnemyCardSystem : Singleton<CardSystem>
             Enemydrawpile.Add(card);
         }
     }
-    private IEnumerator EnemyDrawperformer(DrawCard drawperformer)
+    public IEnumerator EnemyDrawperformer(DrawCard drawperformer)
     {
         int enemyCardamount = Mathf.Min(drawperformer.Amount, Enemydrawpile.Count);
         int notdraewn = drawperformer.Amount - enemyCardamount;
@@ -51,7 +57,7 @@ public class EnemyCardSystem : Singleton<CardSystem>
             }
         }
     }
-    private IEnumerator EnemyDiscardperformer(DiscardCardsGa endiscard)
+    public IEnumerator EnemyDiscardperformer(DiscardCardsGa endiscard)
     {
         foreach (var card in EnemyHand)
         {
@@ -62,7 +68,7 @@ public class EnemyCardSystem : Singleton<CardSystem>
         }
         EnemyHand.Clear();
     }
-    private IEnumerator DrawCards()
+    public IEnumerator DrawCards()
     {
         Cards card = Enemydrawpile.Draw();
         EnemyHand.Add(card);
@@ -76,12 +82,52 @@ public class EnemyCardSystem : Singleton<CardSystem>
         EnemyDiscardpile.Clear();
     }
     
-    private IEnumerator DiscardCard(EnemyCardview cardview)
+    public IEnumerator DiscardCard(EnemyCardview cardview)
     {
         cardview.transform.DOScale(Vector3.zero, 0.15f);
         Tween tween = cardview.transform.DOMove(EnumDiscardpoint.position, 0.15f);
         yield return tween.WaitForCompletion();      
         Destroy(cardview.gameObject);
+    }
+    public IEnumerator PlayCardPerformer(Playcard playCard)
+    {
+        if (!TurnSystem.Instance.canplay)
+        {
+            Debug.LogWarning("Blocked card play — not player's turn!");
+            yield break;
+        }
+
+        EnemyHand.Remove(playCard.card);
+        EnemyCardview enemyCardview = Enumhanddetails.RemoveCard(playCard.card);
+        Debug.Log("Card has been play)");
+
+        // Notify TurnSystem, but don't discard here
+        TurnSystem turnSystem = FindObjectOfType<TurnSystem>();
+        if (turnSystem != null)
+        {
+            turnSystem.EnSetPlayedCard(playCard.card,enemyCardview);  // Ensure cardview is set
+            turnSystem.NotifyCardPlayed();  // This just sets playedcard to true
+        }
+
+        // Do NOT call yield return dicardCard(cardview); here
+        yield break;  // Exit early
+    }
+    public IEnumerator Dealdamageperformer(Dealdamage damage)
+    {
+        if (damage.Target != null)
+        {
+            damage.Target.takedamage(damage);
+            Debug.Log($"Dealt {damage.Damage} damage!");
+        }
+        yield break;
+
+    }
+    private IEnumerator EnemyAttackPerformer(EnemyAttack attack)
+    {
+
+        Playcard playAction = new Playcard(attack.cardS);
+        //PlayerHealth.Instance.TakeDamage(attackData.Damage);
+        yield return PlayCardPerformer(playAction);
     }
 
 }
