@@ -9,7 +9,7 @@ public class Enemyturn : GameAction
         Debug.Log("EnemyTurn ExecuteEnemyTurn method started");
 
         // Draw 1 card for the enemy (fixed: was 0)
-        DrawCard enemydraw = new DrawCard(0);
+        DrawCard enemydraw = new DrawCard(1);
         ActionSystem.Instance.Preform(enemydraw);
         yield return new WaitUntil(() => !ActionSystem.Instance.Isperforming);
 
