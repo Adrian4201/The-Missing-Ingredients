@@ -10,14 +10,19 @@ public class Enemyturn : GameAction
 
         // Draw 1 card for the enemy (fixed: was 0)
         DrawCard enemydraw = new DrawCard(1);
-        ActionSystem.Instance.Preform(enemydraw);
+        yield return EnemyCardSystem.Instance.EnemyDrawperformer(enemydraw);
         yield return new WaitUntil(() => !ActionSystem.Instance.Isperforming);
 
         // Check enemy's own hand (fixed: was CardSystem.Instance.Hand)
         if (EnemyCardSystem.Instance.EnemyHand.Count > 0)
         {
-            Cards card = EnemyCardSystem.Instance.EnemyHand[0];  // Select first card (or randomize/logic for selection)
+            Cards card = EnemyCardSystem.Instance.EnemyHand[0];  
             Debug.Log("Enemy picked up card: " + card.Title);
+
+            //perform playcard
+            EnemyPlayCard playcard = new EnemyPlayCard(card);
+            ActionSystem.Instance.Preform(playcard);
+            yield return new WaitUntil(() => !ActionSystem.Instance.Isperforming);
 
             // Perform attack with the card
             EnemyAttack enemAttack = new EnemyAttack(card);

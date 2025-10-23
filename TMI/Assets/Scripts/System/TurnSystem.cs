@@ -28,7 +28,6 @@ public class TurnSystem : Singleton<TurnSystem>
     private void Start()
     {
         StartCoroutine(StartTurn());
-        
     }
 
     public IEnumerator StartTurn()
@@ -62,17 +61,18 @@ public class TurnSystem : Singleton<TurnSystem>
 
                 //Don't do anything else until player plays a card
                 yield return new WaitUntil(() => !ActionSystem.Instance.Isperforming);
+
                 yield return new WaitUntil(() => playedcard);
                 canplay = false;
                 
                 Debug.Log("reached");
                 if (cardview != null)
                 {
-                    DiscardCardsGa discardAction = new DiscardCardsGa();
-                    ActionSystem.Instance.Preform(discardAction);
-                    yield return new WaitUntil(() => !ActionSystem.Instance.Isperforming);
+                    CardSystem.Instance.dicardCard(cardview);
+                    
                     cardview = null;
-                    card = null;
+                    yield return new WaitUntil(() => !ActionSystem.Instance.Isperforming);
+                   
                     Debug.Log("Card discarded and destroyed.");
                 }
                 else
@@ -92,12 +92,13 @@ public class TurnSystem : Singleton<TurnSystem>
                 Debug.Log("enemyturn");
                 canplay = false;
 
+                Enemyturn enemyTurnAction = new Enemyturn();
                 onCardPlayedCallback = () => {
-                    Debug.Log("Enemy card played—proceeding with turn!");  // You can customize this if needed
-                    // If you want to add more logic, like advancing the turn, do it here
+                    Debug.Log("Enemy card played—proceeding with turn!");  
+
+                    
                 };
 
-                Enemyturn enemyTurnAction = new Enemyturn();
                 yield return StartCoroutine(enemyTurnAction.ExecuteEnemyTurn());
 
                 onCardPlayedCallback = null;
@@ -130,7 +131,7 @@ public class TurnSystem : Singleton<TurnSystem>
     {
         card = playedCard;
         cardview = playedCardView;
-        Debug.Log("SetPlayedCard called: cardview is now set.");  // Add this for debugging
+        Debug.Log("SetPlayedCard called: cardview is now set.");  
     }
     public void EnSetPlayedCard(Cards playedCard, EnemyCardview Encardview )
     {

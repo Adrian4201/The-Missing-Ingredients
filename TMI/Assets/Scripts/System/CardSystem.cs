@@ -163,6 +163,15 @@ public class CardSystem : Singleton<CardSystem>
         Playcard playAction = new Playcard(attack.cardS);
         yield return PlayCardPerformer(playAction);
     }
-    
+    public IEnumerator DiscardSpecificCard(Cards card, CardDescriptions cardView)
+    {
+        if (Hand.Contains(card))
+        {
+            Hand.Remove(card);
+            Discardpile.Add(card);
+            yield return dicardCard(cardView);  // Keeps the tween!
+                                                 
+        }
 
+    }
 }

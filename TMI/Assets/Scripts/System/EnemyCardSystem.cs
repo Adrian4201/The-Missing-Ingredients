@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR;
 
@@ -9,6 +10,7 @@ public class EnemyCardSystem : Singleton<EnemyCardSystem>
     [SerializeField] private EnemyHandView Enumhanddetails;
     [SerializeField] private Transform ENumDrawpoint;
     [SerializeField] private Transform EnumDiscardpoint;
+    [SerializeField] private Transform EnemyPlaypoint;
     //list for 
     private readonly List<Cards> Enemydrawpile = new();
     private readonly List<Cards> EnemyDiscardpile = new();
@@ -17,7 +19,7 @@ public class EnemyCardSystem : Singleton<EnemyCardSystem>
     {
         ActionSystem.Attachperformmer<DrawCard>(EnemyDrawperformer);
         ActionSystem.Attachperformmer<DiscardCardsGa>(EnemyDiscardperformer);
-        ActionSystem.Attachperformmer<Playcard>(PlayCardPerformer);
+        ActionSystem.Attachperformmer<EnemyPlayCard>(EnemyPlayCardPerformer);
         ActionSystem.Attachperformmer<Dealdamage>(Dealdamageperformer);
         ActionSystem.Attachperformmer<EnemyAttack>(EnemyAttackPerformer);
 
@@ -26,7 +28,7 @@ public class EnemyCardSystem : Singleton<EnemyCardSystem>
     {
         ActionSystem.Dettachperformer<DrawCard>();
         ActionSystem.Dettachperformer<DiscardCardsGa>();
-        ActionSystem.Dettachperformer<Playcard>();
+        ActionSystem.Dettachperformer<EnemyPlayCard>();
         ActionSystem.Dettachperformer<Dealdamage>();
         ActionSystem.Dettachperformer<EnemyAttack>();
     }
@@ -72,8 +74,8 @@ public class EnemyCardSystem : Singleton<EnemyCardSystem>
     {
         Cards card = Enemydrawpile.Draw();
         EnemyHand.Add(card);
-        EnemyCardview EnemyView = EnemyCardViewsCreator.Instance.CreateEnemyView(card,ENumDrawpoint.position,ENumDrawpoint.rotation);
-        yield return EnemyView;
+        EnemyCardview EnemyView = EnemyCardViewsCreator.Instance.CreateEnemyView(card,ENumDrawpoint.position,ENumDrawpoint.rotation, Enumhanddetails.transform);
+        yield return Enumhanddetails.addCard(EnemyView);
     }
     
     private void EnRefill()
@@ -89,28 +91,31 @@ public class EnemyCardSystem : Singleton<EnemyCardSystem>
         yield return tween.WaitForCompletion();      
         Destroy(cardview.gameObject);
     }
-    public IEnumerator PlayCardPerformer(Playcard playCard)
+    public IEnumerator EnemyPlayCardPerformer(EnemyPlayCard playCard)
     {
-        if (!TurnSystem.Instance.canplay)
+        if (EnemyHand.Contains(playCard.Card))
         {
-            Debug.LogWarning("Blocked card play — not player's turn!");
-            yield break;
+            EnemyHand.Remove(playCard.Card);
+            EnemyCardview enemyCardview = Enumhanddetails.RemoveCard(playCard.Card);
+            Debug.Log("Enemy played card: " + playCard.Card.Title);
+            if (enemyCardview != null)
+            {
+                // Animate to play point
+                enemyCardview.transform.DOScale(Vector3.one * 1.2f, 0.2f);
+                Tween tween = enemyCardview.transform.DOMove(EnemyPlaypoint.position, 0.3f);
+                yield return tween.WaitForCompletion();
+                Debug.Log("Enemy card animated to play area.");
+            }
+            else
+            {
+                Debug.LogWarning("EnemyCardview is null for played card.");
+            }
         }
-
-        EnemyHand.Remove(playCard.card);
-        EnemyCardview enemyCardview = Enumhanddetails.RemoveCard(playCard.card);
-        Debug.Log("Card has been play)");
-
-        // Notify TurnSystem, but don't discard here
-        TurnSystem turnSystem = FindObjectOfType<TurnSystem>();
-        if (turnSystem != null)
+        else
         {
-            turnSystem.EnSetPlayedCard(playCard.card,enemyCardview);  // Ensure cardview is set
-            turnSystem.NotifyCardPlayed();  // This just sets playedcard to true
+            Debug.LogWarning("Card not in enemy hand; cannot play.");
         }
-
-        // Do NOT call yield return dicardCard(cardview); here
-        yield break;  // Exit early
+        yield break;
     }
     public IEnumerator Dealdamageperformer(Dealdamage damage)
     {
@@ -127,7 +132,7 @@ public class EnemyCardSystem : Singleton<EnemyCardSystem>
 
         Playcard playAction = new Playcard(attack.cardS);
         //PlayerHealth.Instance.TakeDamage(attackData.Damage);
-        yield return PlayCardPerformer(playAction);
+        yield return null;
     }
 
 }

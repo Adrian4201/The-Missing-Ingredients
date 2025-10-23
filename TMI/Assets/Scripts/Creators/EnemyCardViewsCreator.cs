@@ -8,9 +8,9 @@ using UnityEngine;
 public class EnemyCardViewsCreator : Singleton<EnemyCardViewsCreator>
 {
     [SerializeField] private EnemyCardview enemyCardviewPrefab;
-    public EnemyCardview CreateEnemyView(Cards card, Vector3 postition ,Quaternion rotation)
+    public EnemyCardview CreateEnemyView(Cards card, Vector3 postition ,Quaternion rotation, Transform parent)
     {
-        EnemyCardview enemyview = Instantiate(enemyCardviewPrefab, postition,rotation);
+        EnemyCardview enemyview = Instantiate(enemyCardviewPrefab, postition,rotation, parent);
         enemyview.transform.localScale = Vector3.zero;
         enemyview.transform.DOScale(Vector3.one, 0.15f);
         enemyview.Setup(card);

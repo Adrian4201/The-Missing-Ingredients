@@ -13,6 +13,7 @@ public class EnemyHandView : MonoBehaviour
 
     public IEnumerator addCard(EnemyCardview card)
     {
+        card.transform.SetParent(transform, worldPositionStays: false);
         cards.Add(card);
         yield return UpdatecardpostionEn(0.15f);
     }
