@@ -64,24 +64,18 @@ public class TurnSystem : Singleton<TurnSystem>
 
                 yield return new WaitUntil(() => playedcard);
                 canplay = false;
-                
-                Debug.Log("reached");
-                if (cardview != null)
+                Debug.Log("Reached");
+                if (cardview != null && card != null)
                 {
-                    CardSystem.Instance.dicardCard(cardview);
-                    
+                    yield return CardSystem.Instance.DiscardSpecificCard(card, cardview);
                     cardview = null;
-                    yield return new WaitUntil(() => !ActionSystem.Instance.Isperforming);
-                   
-                    Debug.Log("Card discarded and destroyed.");
+                    card = null;
+                    Debug.Log("Card discarded (view destroyed, removed from hand).");
                 }
                 else
                 {
-                    Debug.LogWarning("cardview is null cant discard");
-
+                    Debug.LogWarning("cardview or card is null; cannot discard.");
                 }
-
-
 
                 //Once all actions or "effects" are done, run this same StartTurn method
                 //With the opposite boolean
