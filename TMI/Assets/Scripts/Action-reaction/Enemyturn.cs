@@ -24,18 +24,20 @@ public class Enemyturn : GameAction
             ActionSystem.Instance.Preform(playcard);
             yield return new WaitUntil(() => !ActionSystem.Instance.Isperforming);
 
+
             // Perform attack with the card
             EnemyAttack enemAttack = new EnemyAttack(card);
             ActionSystem.Instance.Preform(enemAttack);
             yield return new WaitUntil(() => !ActionSystem.Instance.Isperforming);
 
+
             // Discard the used card (added: similar to player's turn)
-            /*
-            EnemyCardSystem.Instance.EnemyHand.Remove(card);
-            EnemyDiscardpile.Add(card); 
-            EnemyCardview cardView = EnemyHandView.RemoveCard(card); 
-            yield return EnemyCardSystem.Instance.DiscardCard(cardView);  // Call discard method
-            */
+            
+          
+            EnemyCardSystem.Instance.EnemyDiscardpile.Add(card);
+            EnemyCardview cardView = EnemyCardSystem.Instance.Enumhanddetails.RemoveCard(card);
+            yield return EnemyCardSystem.Instance.DiscardCard(cardView); 
+            
         }
         else
         {

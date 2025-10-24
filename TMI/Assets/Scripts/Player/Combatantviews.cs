@@ -20,7 +20,7 @@ public class Combatantviews : MonoBehaviour
             Debug.Log("sprite render is not assigned");
             return;
         }
-        Maxhealth = CurrentHealth + health;
+        Maxhealth = health;
         spriteRenderer.sprite = image;
         updateBase(health);
     }

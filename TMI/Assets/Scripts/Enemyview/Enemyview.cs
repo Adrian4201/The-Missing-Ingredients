@@ -11,6 +11,7 @@ public class Enemyview : Combatantviews
 
     public void setup(EnemyData enemyData)
     {
+        Debug.Log($"EnemyData Image: {enemyData.Image}");
         attackPower = 10;
         //UpdatedAttack();
         setupBase(enemyData.Health, enemyData.Image);

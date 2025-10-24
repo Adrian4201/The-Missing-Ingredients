@@ -7,13 +7,13 @@ using UnityEngine.XR;
 
 public class EnemyCardSystem : Singleton<EnemyCardSystem>
 {
-    [SerializeField] private EnemyHandView Enumhanddetails;
+    [SerializeField] public EnemyHandView Enumhanddetails;
     [SerializeField] private Transform ENumDrawpoint;
     [SerializeField] private Transform EnumDiscardpoint;
     [SerializeField] private Transform EnemyPlaypoint;
     //list for 
     private readonly List<Cards> Enemydrawpile = new();
-    private readonly List<Cards> EnemyDiscardpile = new();
+    public readonly List<Cards> EnemyDiscardpile = new();
     public readonly List<Cards> EnemyHand = new();
     private void OnEnable()
     {
@@ -86,6 +86,11 @@ public class EnemyCardSystem : Singleton<EnemyCardSystem>
     
     public IEnumerator DiscardCard(EnemyCardview cardview)
     {
+        if (cardview == null)
+        {
+            Debug.LogWarning("Tried to discard a null card view!");
+            yield break;
+        }
         cardview.transform.DOScale(Vector3.zero, 0.15f);
         Tween tween = cardview.transform.DOMove(EnumDiscardpoint.position, 0.15f);
         yield return tween.WaitForCompletion();      
@@ -104,6 +109,10 @@ public class EnemyCardSystem : Singleton<EnemyCardSystem>
                 enemyCardview.transform.DOScale(Vector3.one * 1.2f, 0.2f);
                 Tween tween = enemyCardview.transform.DOMove(EnemyPlaypoint.position, 0.3f);
                 yield return tween.WaitForCompletion();
+
+                enemyCardview.transform.DOScale(Vector3.zero, 0.15f);
+                yield return new WaitForSeconds(0.15f);
+                Destroy(enemyCardview.gameObject);
                 Debug.Log("Enemy card animated to play area.");
             }
             else

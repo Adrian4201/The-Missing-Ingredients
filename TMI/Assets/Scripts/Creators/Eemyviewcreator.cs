@@ -5,6 +5,7 @@ using UnityEngine;
 public class Eemyviewcreator : Singleton<Eemyviewcreator>
 {
     [SerializeField] private List<Transform> slots;
+
     [SerializeField] private Enemyview enemyViewPrefab;
     public List<Enemyview> Enemyviews { get; private set; } = new List<Enemyview>();
     public Enemyview Createview(EnemyData enemyData, Vector3 position, Quaternion rotation)
@@ -17,9 +18,9 @@ public class Eemyviewcreator : Singleton<Eemyviewcreator>
          
         Enemyview enemyview = Instantiate(enemyViewPrefab, position, rotation);
         enemyview.setup(enemyData);  
-        enemyview.transform.parent = slots[Enemyviews.Count];  
-        enemyview.transform.localPosition = Vector3.zero;  
-        Enemyviews.Add(enemyview);  
+       // enemyview.transform.parent = slots[Enemyviews.Count];  
+        //enemyview.transform.localPosition = Vector3.zero;  
+       // Enemyviews.Add(enemyview);  
         return enemyview;
     }
 }
