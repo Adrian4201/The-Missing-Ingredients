@@ -26,9 +26,9 @@ public class EnemyHandView : MonoBehaviour
         return cardView;
 
     }
-    private EnemyCardview GetCardview(Cards cardss)
+    private EnemyCardview GetCardview(Cards Cards)
     {
-        return cards.Where(Enemyview => Enemyview.Card == cardss).FirstOrDefault();
+        return cards.Where(Enemyview => Enemyview.Card == Cards).FirstOrDefault();
     }
     
     private IEnumerator UpdatecardpostionEn(float time)

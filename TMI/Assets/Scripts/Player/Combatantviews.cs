@@ -22,6 +22,7 @@ public class Combatantviews : MonoBehaviour
         }
         Maxhealth = health;
         spriteRenderer.sprite = image;
+        Debug.Log("Combatant view!" + image);
         updateBase(health);
     }
 

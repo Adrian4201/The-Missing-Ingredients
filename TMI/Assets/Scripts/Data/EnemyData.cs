@@ -10,7 +10,7 @@ public class EnemyData : ScriptableObject
     [field: SerializeField] public int Health {  get; private set; }
     [field : SerializeField] public int Attackpower {  get; private set; }
 
-    [field: SerializeField] public CardData Card { get; private set; }
+    //[field: SerializeField] public CardData Card { get; private set; }
     [field: SerializeField] public List<CardData> Deck { get; private set; }
 
 }
