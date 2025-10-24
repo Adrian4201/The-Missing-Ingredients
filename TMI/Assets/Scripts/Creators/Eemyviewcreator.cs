@@ -7,6 +7,8 @@ public class Eemyviewcreator : Singleton<Eemyviewcreator>
     [SerializeField] private List<Transform> slots;
 
     [SerializeField] private Enemyview enemyViewPrefab;
+
+    [SerializeField] Sprite Sprite;
     public List<Enemyview> Enemyviews { get; private set; } = new List<Enemyview>();
     public Enemyview Createview(EnemyData enemyData, Vector3 position, Quaternion rotation)
     {
