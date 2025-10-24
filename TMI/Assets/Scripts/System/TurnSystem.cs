@@ -50,7 +50,7 @@ public class TurnSystem : Singleton<TurnSystem>
                 onCardPlayedCallback = () => {
                     playedcard = true;
                     CardSystem.Instance.dicardCard(cardview);
-                    //Destroy(cardview.gameObject);
+                    Destroy(cardview.gameObject);
                     Debug.Log("Card played—unblocking turn!"); 
                 };
                 //Player draw card method
@@ -67,7 +67,8 @@ public class TurnSystem : Singleton<TurnSystem>
                 Debug.Log("Reached");
                 if (cardview != null && card != null)
                 {
-                    yield return CardSystem.Instance.DiscardSpecificCard(card, cardview);
+                    DiscardCardsGa discard = new();
+                    ActionSystem.Instance.AddAction(discard);
                     cardview = null;
                     card = null;
                     Debug.Log("Card discarded (view destroyed, removed from hand).");
