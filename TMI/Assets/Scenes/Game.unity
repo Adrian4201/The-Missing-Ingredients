@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 30137183}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.63, y: -0.95, z: 0}
+  m_LocalPosition: {x: 6.1, y: -1.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -168,6 +168,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splinecon: {fileID: 940165766}
+--- !u!1 &161326798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 161326799}
+  m_Layer: 0
+  m_Name: EnemyPlayArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &161326799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161326798}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.17, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1974178256}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &170134592
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,8 +388,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enumhanddetails: {fileID: 30137185}
-  ENumDrawpoint: {fileID: 2123340756}
-  EnumDiscardpoint: {fileID: 1551262043}
+  ENumDrawpoint: {fileID: 532399407}
+  EnumDiscardpoint: {fileID: 1004184735}
+  EnemyPlaypoint: {fileID: 161326799}
 --- !u!1 &388647392
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,6 +612,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0847871, y: 0.74707997, z: 1}
   m_Center: {x: 0.023711158, y: 0.12646022, z: 0}
+--- !u!1 &532399406
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 532399407}
+  m_Layer: 0
+  m_Name: EnemyDrawpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &532399407
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532399406}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9.92, y: 4.84, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1974178256}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &636766298
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,23 +951,23 @@ MonoBehaviour:
   - m_EditModeType: 1
     m_Knots:
     - Position:
-        x: 0
-        y: 0
+        x: -3
+        y: -1.4198077
         z: 0
       TangentIn:
         x: -0
         y: -0
-        z: -0
+        z: -0.3319014
       TangentOut:
         x: 0
         y: 0
-        z: 0
+        z: 0.3319014
       Rotation:
         value:
-          x: -0.00000025288105
-          y: 0
-          z: 0.70710665
-          w: 0.7071069
+          x: -0.252366
+          y: 0.6605387
+          z: 0.05445588
+          w: 0.7050067
     - Position:
         x: 0
         y: 0
@@ -912,35 +975,35 @@ MonoBehaviour:
       TangentIn:
         x: -0
         y: -0
-        z: -0.0060979365
+        z: -1.0107144
       TangentOut:
         x: 0
         y: 0
-        z: 0.0060979365
+        z: 0.99170005
       Rotation:
         value:
-          x: -0.6997926
-          y: 0.10144099
-          z: 0.10144099
-          w: 0.6997926
+          x: 0.7032054
+          y: -0.07417659
+          z: 0.69912547
+          w: -0.10594147
     - Position:
-        x: 0
-        y: 0.060979366
+        x: 3
+        y: -1.1
         z: 0
       TangentIn:
         x: -0
         y: -0
-        z: -0.0060979365
+        z: -0.3195309
       TangentOut:
         x: 0
         y: 0
-        z: 0.0060979365
+        z: 0.3195309
       Rotation:
         value:
-          x: -0.70710677
-          y: -0.00014098235
-          z: -0.00014098235
-          w: 0.70710677
+          x: 0.41157132
+          y: -0.57498616
+          z: 0.58435625
+          w: -0.39815548
     m_MetaData:
     - Mode: 0
       Tension: 0.5
@@ -959,6 +1022,37 @@ MonoBehaviour:
       m_Data: []
   m_Knots:
     m_KnotsLink: []
+--- !u!1 &1004184734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1004184735}
+  m_Layer: 0
+  m_Name: EnemyDiscardpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1004184735
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004184734}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -9.45, y: 4.53, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1974178256}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1084155072
 GameObject:
   m_ObjectHideFlags: 0
@@ -1987,8 +2081,11 @@ Transform:
   - {fileID: 1311388265}
   - {fileID: 194551311}
   - {fileID: 2123340756}
+  - {fileID: 532399407}
   - {fileID: 1551262043}
+  - {fileID: 1004184735}
   - {fileID: 495492583}
+  - {fileID: 161326799}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2022517956
