@@ -15,9 +15,9 @@ MonoBehaviour:
   <Image>k__BackingField: {fileID: 21300000, guid: 4ad92f40c2308674686d2f9c434b9d09, type: 3}
   <Health>k__BackingField: 40
   <Attackpower>k__BackingField: 1
-  <Card>k__BackingField: {fileID: 11400000, guid: a50675c3af507b24c8d3a8dbb2130f03, type: 2}
   <Deck>k__BackingField:
-  - {fileID: 11400000, guid: 0d8db10d19bd0f54b9da024a526c944f, type: 2}
-  - {fileID: 11400000, guid: f799106557ab1324f8a3ed6fb5ef9581, type: 2}
-  - {fileID: 11400000, guid: 8757d677a9cdc9c4683d783a2022de55, type: 2}
-  - {fileID: 11400000, guid: ddea7cd3fc9c4cc4aabe829e9f37afca, type: 2}
+  - {fileID: 11400000, guid: c7fa37959e37071418de843161338869, type: 2}
+  - {fileID: 11400000, guid: c7fa37959e37071418de843161338869, type: 2}
+  - {fileID: 11400000, guid: c7fa37959e37071418de843161338869, type: 2}
+  - {fileID: 11400000, guid: c7fa37959e37071418de843161338869, type: 2}
+  - {fileID: 11400000, guid: c7fa37959e37071418de843161338869, type: 2}
