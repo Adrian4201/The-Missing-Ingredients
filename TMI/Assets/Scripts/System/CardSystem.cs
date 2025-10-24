@@ -169,7 +169,7 @@ public class CardSystem : Singleton<CardSystem>
         {
             Hand.Remove(card);
             Discardpile.Add(card);
-            yield return dicardCard(cardView);  // Keeps the tween!
+            yield return dicardCard(cardView);  
                                                  
         }
 
