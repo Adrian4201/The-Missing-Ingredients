@@ -12,9 +12,9 @@ public class EnemyCardSystem : Singleton<EnemyCardSystem>
     [SerializeField] private Transform EnumDiscardpoint;
     [SerializeField] private Transform EnemyPlaypoint;
     //list for 
-    private readonly List<Cards> Enemydrawpile = new();
-    public readonly List<Cards> EnemyDiscardpile = new();
-    public readonly List<Cards> EnemyHand = new();
+    private readonly List<EnemyCards> Enemydrawpile = new();
+    public readonly List<EnemyCards> EnemyDiscardpile = new();
+    public readonly List<EnemyCards> EnemyHand = new();
     private void OnEnable()
     {
         ActionSystem.Attachperformmer<DrawCard>(EnemyDrawperformer);
@@ -32,15 +32,16 @@ public class EnemyCardSystem : Singleton<EnemyCardSystem>
         ActionSystem.Dettachperformer<Dealdamage>();
         ActionSystem.Dettachperformer<EnemyAttack>();
     }
-    public void Setup(List<CardData> deckData)
+    public void Setup(List<EnemyCardData> deckData)
     {
-        foreach (var cardData in deckData)
+        foreach (var enemycarddata in deckData)
         {
-            Debug.Log(cardData);
-            Cards card = new(cardData);
+            Debug.Log(enemycarddata);
+            EnemyCards card = new(  enemycarddata);
             Enemydrawpile.Add(card);
         }
     }
+
     public IEnumerator EnemyDrawperformer(DrawCard drawperformer)
     {
         int enemyCardamount = Mathf.Min(drawperformer.Amount, Enemydrawpile.Count);
@@ -61,10 +62,10 @@ public class EnemyCardSystem : Singleton<EnemyCardSystem>
     }
     public IEnumerator EnemyDiscardperformer(DiscardCardsGa endiscard)
     {
-        foreach (var card in EnemyHand)
+        foreach (var Card in EnemyHand)
         {
-            EnemyDiscardpile.Add(card);
-            EnemyCardview Cardview = Enumhanddetails.RemoveCard(card);
+            EnemyDiscardpile.Add(Card);
+            EnemyCardview Cardview = Enumhanddetails.RemoveCard(Card);
             yield return DiscardCard(Cardview);
 
         }
@@ -72,7 +73,7 @@ public class EnemyCardSystem : Singleton<EnemyCardSystem>
     }
     public IEnumerator DrawCards()
     {
-        Cards card = Enemydrawpile.Draw();
+        EnemyCards card = Enemydrawpile.Draw();
         EnemyHand.Add(card);
         EnemyCardview EnemyView = EnemyCardViewsCreator.Instance.CreateEnemyView(card,ENumDrawpoint.position,ENumDrawpoint.rotation, Enumhanddetails.transform);
         yield return Enumhanddetails.addCard(EnemyView);
@@ -98,11 +99,11 @@ public class EnemyCardSystem : Singleton<EnemyCardSystem>
     }
     public IEnumerator EnemyPlayCardPerformer(EnemyPlayCard playCard)
     {
-        if (EnemyHand.Contains(playCard.Card))
+        if (EnemyHand.Contains(playCard.Cards))
         {
-            EnemyHand.Remove(playCard.Card);
-            EnemyCardview enemyCardview = Enumhanddetails.RemoveCard(playCard.Card);
-            Debug.Log("Enemy played card: " + playCard.Card.Title);
+            EnemyHand.Remove(playCard.Cards);
+            EnemyCardview enemyCardview = Enumhanddetails.RemoveCard(playCard.Cards);
+            Debug.Log("Enemy played card: " + playCard.Cards.Title);
             if (enemyCardview != null)
             {
                 // Animate to play point
@@ -139,7 +140,7 @@ public class EnemyCardSystem : Singleton<EnemyCardSystem>
     private IEnumerator EnemyAttackPerformer(EnemyAttack attack)
     {
 
-        Playcard playAction = new Playcard(attack.cardS);
+        EnemyPlayCard playAction = new EnemyPlayCard(attack.Attack);
         //PlayerHealth.Instance.TakeDamage(attackData.Damage);
         yield return null;
     }

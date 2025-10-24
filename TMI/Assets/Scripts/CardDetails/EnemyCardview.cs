@@ -16,10 +16,10 @@ public class EnemyCardview : MonoBehaviour
     [SerializeField] private GameObject wrapper;
     [SerializeField] private LayerMask DropArea;
 
-    public Cards Card { get; private set; }
+    public EnemyCards Card { get; private set; }
     
 
-    public void Setup(Cards card)
+    public void Setup(EnemyCards card)
     {
         if (card == null)
         {

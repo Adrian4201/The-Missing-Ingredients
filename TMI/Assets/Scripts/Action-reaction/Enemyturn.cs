@@ -16,7 +16,7 @@ public class Enemyturn : GameAction
         // Check enemy's own hand (fixed: was CardSystem.Instance.Hand)
         if (EnemyCardSystem.Instance.EnemyHand.Count > 0)
         {
-            Cards card = EnemyCardSystem.Instance.EnemyHand[0];  
+            EnemyCards card = EnemyCardSystem.Instance.EnemyHand[0];  
             Debug.Log("Enemy picked up card: " + card.Title);
 
             //perform playcard

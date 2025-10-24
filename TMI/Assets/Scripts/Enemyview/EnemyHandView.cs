@@ -17,7 +17,7 @@ public class EnemyHandView : MonoBehaviour
         cards.Add(card);
         yield return UpdatecardpostionEn(0.15f);
     }
-    public EnemyCardview RemoveCard(Cards card)
+    public EnemyCardview RemoveCard(EnemyCards card)
     {
         EnemyCardview cardView = GetCardview(card);
         if (cardView == null) return null;
@@ -26,7 +26,7 @@ public class EnemyHandView : MonoBehaviour
         return cardView;
 
     }
-    private EnemyCardview GetCardview(Cards Cards)
+    private EnemyCardview GetCardview(EnemyCards Cards)
     {
         return cards.Where(Enemyview => Enemyview.Card == Cards).FirstOrDefault();
     }

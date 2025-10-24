@@ -7,6 +7,7 @@ public class MatchSetupSystem : MonoBehaviour
     [SerializeField] private List<EnemyData> enemyDatas;
 
     [SerializeField] private PlayerData playerDatas;
+    [SerializeField] private EnemyData enemyData;
     
     private void Start()
     {
@@ -16,8 +17,8 @@ public class MatchSetupSystem : MonoBehaviour
         
         CardSystem.Instance.Setup(playerDatas.Deck);
 
-        EnemyCardSystem.Instance.Setup(playerDatas.Deck);  
-        Debug.Log("EnemyCardSystem set up with shared deck (" + playerDatas.Deck.Count + " cards, same as player).");
+        EnemyCardSystem.Instance.Setup(enemyData.Deck);  
+        Debug.Log("EnemyCardSystem set up with shared deck (" + enemyData.Deck.Count + " cards, same as player).");
 
         DrawCard card = new(2);
         ActionSystem.Instance.Preform(card);

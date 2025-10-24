@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyPlayCard : GameAction
 {
-    public Cards Card { get; private set; }
-    public EnemyPlayCard(Cards card)
+    public EnemyCards Cards { get; private set; }
+    public EnemyPlayCard(EnemyCards card)
     {
-        Card = card;
+        Cards = card;
     }
 }
