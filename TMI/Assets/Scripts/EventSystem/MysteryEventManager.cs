@@ -5,17 +5,22 @@ using TMPro;
 
 public class MysteryEventManager : MonoBehaviour
 {
-    [Header("UI References")]
-    [SerializeField] private GameObject eventPanel;
-    [SerializeField] private TMP_Text eventTitle;
-    [SerializeField] private TMP_Text eventDescription;
-    [SerializeField] private Image eventImage;
-    [SerializeField] private Transform optionsContainer;
-    [SerializeField] private GameObject optionButtonPrefab;
-    [SerializeField] private TMP_Text resultText;
-    [SerializeField] private Button continueButton;
+    public static MysteryEventManager Instance { get; private set; }
 
-    private MysteryEventData currentEvent;
+    [Header("UI")]
+    [SerializeField] private GameObject eventPanel;        // root panel (inactive by default)
+    [SerializeField] private TMP_Text descriptionText;     // Description (main text)
+    [SerializeField] private Image eventImage;             // artwork
+    [SerializeField] private Transform optionsContainer;   // OptionsContainer (vertical layout)
+    [SerializeField] private GameObject optionButtonPrefab;// prefab with Button + TMP_Text child
+    [SerializeField] private TMP_Text resultText;          // ResultText (hidden initially)
+    [SerializeField] private Button continueButton;        // ContButton (hidden initially)
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this) Destroy(this.gameObject);
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -24,67 +29,77 @@ public class MysteryEventManager : MonoBehaviour
         continueButton.gameObject.SetActive(false);
     }
 
+    // show the event popup
     public void ShowEvent(MysteryEventData data)
     {
-        currentEvent = data;
+        ClearOptions();
         eventPanel.SetActive(true);
 
-        eventTitle.text = data.eventName;
-        eventDescription.text = data.description;
+        descriptionText.text = data.description;
         eventImage.sprite = data.eventImage;
 
-        ClearOptions();
-        foreach (var option in data.options)
+        // spawn option buttons
+        foreach (var opt in data.options)
         {
-            var button = Instantiate(optionButtonPrefab, optionsContainer);
-            button.GetComponentInChildren<TMP_Text>().text = option.optionText;
-            button.GetComponent<Button>().onClick.AddListener(() => SelectOption(option));
+            var btnObj = Instantiate(optionButtonPrefab, optionsContainer);
+            var btn = btnObj.GetComponent<Button>();
+            var label = btnObj.GetComponentInChildren<TMP_Text>();
+            if (label != null) label.text = opt.optionText;
+
+            // cache local copy for closure
+            var localOpt = opt;
+            btn.onClick.AddListener(() => OnOptionClicked(localOpt));
         }
+
+        resultText.gameObject.SetActive(false);
+        continueButton.gameObject.SetActive(false);
     }
 
-    private void SelectOption(EventOption option)
+    private void OnOptionClicked(EventOption option)
     {
-        // Apply effects
+        // apply effects (hook into your PlayerStats or GameManager)
         ApplyOptionEffects(option);
 
-        // Show result text
-        eventDescription.text = option.resultText;
+        // hide all option buttons
+        foreach (Transform t in optionsContainer) Destroy(t.gameObject);
 
-        // Hide old buttons
-        ClearOptions();
+        // show the result text and continue button
+        descriptionText.text = option.resultText; // replace main description with result text
+        resultText.gameObject.SetActive(false);   // not needed separately if using description
+        continueButton.gameObject.SetActive(true);
 
-        if (option.endsEvent)
+        // wire continue: if endsEvent close, otherwise you could chain
+        continueButton.onClick.RemoveAllListeners();
+        continueButton.onClick.AddListener(() =>
         {
-            // End the event immediately
-            continueButton.gameObject.SetActive(true);
-            continueButton.onClick.RemoveAllListeners();
-            continueButton.onClick.AddListener(CloseEvent);
-        }
-        else
-        {
-            // Wait for player to hit Continue (for multi-step chains later)
-            resultText.gameObject.SetActive(true);
-            resultText.text = option.resultText;
-            continueButton.gameObject.SetActive(true);
-            continueButton.onClick.RemoveAllListeners();
-            continueButton.onClick.AddListener(CloseEvent);
-        }
+            if (option.endsEvent) CloseEvent();
+            else CloseEvent(); // you can replace this to chain into another event
+        });
     }
 
     private void ApplyOptionEffects(EventOption option)
     {
-        // Plug in your player data or stat manager here
-        Debug.Log($"Health change: {option.healthChange}, Gold change: {option.goldChange}");
+        // Example: call your player code
+       // if (option.healthChange != 0)
+            //PlayerStats.Instance.ModifyHealth(option.healthChange);
+
+        //if (option.goldChange != 0)
+            //PlayerStats.Instance.ModifyGold(option.goldChange);
+
+        // Add more effect handling here
     }
 
     private void ClearOptions()
     {
-        foreach (Transform child in optionsContainer)
-            Destroy(child.gameObject);
+        foreach (Transform t in optionsContainer)
+            Destroy(t.gameObject);
     }
 
     public void CloseEvent()
     {
+        ClearOptions();
         eventPanel.SetActive(false);
+        resultText.gameObject.SetActive(false);
+        continueButton.gameObject.SetActive(false);
     }
 }
