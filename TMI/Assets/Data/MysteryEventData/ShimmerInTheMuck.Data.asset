@@ -13,6 +13,17 @@ MonoBehaviour:
   m_Name: ShimmerInTheMuck.Data
   m_EditorClassIdentifier: 
   eventName: Shimmer in the Muck
-  description: 
+  description: 'You look into the shimmering barrel, your bruised reflection staring
+    back. At the bottom, a shimmer gleams under all the bubbling ooze. '
   eventImage: {fileID: 21300000, guid: e778969bb60750248ae0dd481dc3544c, type: 3}
-  options: []
+  options:
+  - optionText: Reach in?
+    resultText: You snag a handful of Kaltos, dripping with monster guts. Yuck.
+    healthChange: -6
+    goldChange: 8
+    endsEvent: 1
+  - optionText: Leave.
+    resultText: You leave the bubbling barrel.
+    healthChange: 0
+    goldChange: 0
+    endsEvent: 1
