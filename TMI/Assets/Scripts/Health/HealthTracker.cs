@@ -15,7 +15,6 @@ public class HealthTracker : MonoBehaviour
 
     [SerializeField] private Sprite spriteRenderer;
 
-    private Enemyview enemyView;
     void Start()
     {
         CurrentHealth = maxHealth;
@@ -28,6 +27,6 @@ public class HealthTracker : MonoBehaviour
         if (CurrentHealth < 0) CurrentHealth = 0;
 
         healthBar.Sethealth(CurrentHealth);
-        combatView.updateBase(CurrentHealth); // add this helper in Combatantviews
+        combatView.updateBase(CurrentHealth); 
     }
 }

@@ -20,6 +20,7 @@ public class Combatantviews : MonoBehaviour
             Debug.Log("sprite render is not assigned");
             return;
         }
+        Debug.Log($"{name} spriteRenderer is {(spriteRenderer == null ? "NULL" : "OK")} on start");
         Maxhealth = health;
         spriteRenderer.sprite = image;
         Debug.Log("Combatant view!" + image);
