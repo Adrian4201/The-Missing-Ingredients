@@ -5,28 +5,35 @@ using UnityEngine.UI;
 
 public class HealthTracker : MonoBehaviour
 {
-    public int maxHealth = 100;
-
-    public int CurrentHealth;
-
-    public HealthBar healthBar;
-
+    [SerializeField] private int maxHealth = 50;
+    [SerializeField] private HealthBar healthBar;
     [SerializeField] private Combatantviews combatView;
+    [SerializeField] private Sprite sprite;
 
-    [SerializeField] private Sprite spriteRenderer;
+    private int currentHealth;
 
+    private void Awake()
+    {
+        if (combatView == null)
+            combatView = GetComponentInChildren<Combatantviews>();
+
+        if (healthBar == null)
+            healthBar = GetComponentInChildren<HealthBar>();
+    }
     void Start()
     {
-        CurrentHealth = maxHealth;
+        currentHealth = maxHealth;
         healthBar.SetmaxHealth(maxHealth);
-        combatView.setupBase(CurrentHealth, spriteRenderer);
+        combatView.setupBase(maxHealth, sprite);
     }
     public void takedamage(Dealdamage damage)
     {
-        CurrentHealth -= damage.Damage;
-        if (CurrentHealth < 0) CurrentHealth = 0;
+        currentHealth -= damage.Damage;
+        if (currentHealth < 0) currentHealth = 0;
 
-        healthBar.Sethealth(CurrentHealth);
-        combatView.updateBase(CurrentHealth); 
+        healthBar.Sethealth(currentHealth);
+        combatView.updateBase(currentHealth);
+        Debug.Log($"{name} took {damage.Damage} damage. Current health: {currentHealth}");
     }
+
 }

@@ -24,6 +24,10 @@ public class EnemySystem : Singleton<EnemySystem>
             enemyBoardview.AddEnemy(enemydata);
         }
     }
+    public Enemyview GetCurrentEnemy()
+    {
+        return enemyBoardview.enemyviews[0];
+    }
     /*private IEnumerator EnremyTurnperformer(Enemyturn enemyturn)
     {
         DrawCard enemydraw = new DrawCard(1);
@@ -52,9 +56,18 @@ public class EnemySystem : Singleton<EnemySystem>
     public IEnumerator AttackHeroPerformer(AttackHero attackhero)
     {
         Enemyview attacker = attackhero.Attacker;
+        //wait for move animation
         Tween tween = attacker.transform.DOMoveX(attacker.transform.position.x - 1f, 0.15f);
         yield return tween.WaitForCompletion();
-        Dealdamage dealDamage = new(attacker.attackPower, new(){HeroSystem.Instance.Hero});
+
+        HealthTracker heroHealth = HeroSystem.Instance.Hero.GetComponent<HealthTracker>();
+        if (heroHealth == null)
+        {
+            Debug.LogError("Hero does not have a HealthTracker component!");
+            yield break;
+        }
+        //procedd with damage
+        Dealdamage dealDamage = new(attacker.attackPower,new List<HealthTracker> { heroHealth });
         ActionSystem.Instance.AddAction(dealDamage);
     }
 

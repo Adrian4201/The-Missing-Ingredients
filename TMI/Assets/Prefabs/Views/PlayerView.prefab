@@ -46,8 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d9747515fd54234284a5d7a5656cdd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healhText: {fileID: 7093389104135728739}
+  Healthbar: {fileID: 0}
   spriteRenderer: {fileID: 3989037914914224278}
+  Health: 50
 --- !u!114 &7438845252607085251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,10 +62,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
-  CurrentHealth: 50
   healthBar: {fileID: 6380691492011295250}
   combatView: {fileID: 483000696181132002}
-  spriteRenderer: {fileID: 21300000, guid: 4355836fc772eb14ca9a3ab3931b0f8e, type: 3}
+  sprite: {fileID: 21300000, guid: 4355836fc772eb14ca9a3ab3931b0f8e, type: 3}
+  enemyhealth: 0
 --- !u!1001 &5472607290678187187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -95,7 +96,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2991054924285278928, guid: 7ee3bb935a4f35c4c89687d8f2ab5ab8, type: 3}
       propertyPath: m_Value
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2991054924285278928, guid: 7ee3bb935a4f35c4c89687d8f2ab5ab8, type: 3}
       propertyPath: m_MaxValue
@@ -292,17 +293,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4246fea2359f3749a54ad23d16a76b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7093389104135728739 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2991054924285278928, guid: 7ee3bb935a4f35c4c89687d8f2ab5ab8, type: 3}
-  m_PrefabInstance: {fileID: 5472607290678187187}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2995263865364635981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &8912642821564146396 stripped

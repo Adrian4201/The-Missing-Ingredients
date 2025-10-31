@@ -120,6 +120,20 @@ public class EnemyCardSystem : Singleton<EnemyCardSystem>
             {
                 Debug.LogWarning("EnemyCardview is null for played card.");
             }
+            if (playCard.Cards.Damage > 0)
+            {
+                // Target the player
+                HealthTracker playerHealth = HeroSystem.Instance.Hero.GetComponent<HealthTracker>();
+                if (playerHealth != null)
+                {
+                    Dealdamage damageAction = new Dealdamage(playCard.Cards.Damage, new List<HealthTracker> { playerHealth });
+                    ActionSystem.Instance.AddAction(damageAction);
+                }
+                else
+                {
+                    Debug.LogWarning("Player health tracker not found!");
+                }
+            }
         }
         else
         {
@@ -129,10 +143,20 @@ public class EnemyCardSystem : Singleton<EnemyCardSystem>
     }
     public IEnumerator Dealdamageperformer(Dealdamage damage)
     {
-        if (damage.Target != null)
+        if (damage.Targets == null || damage.Targets.Count == 0)
         {
-            damage.Target.takedamage(damage);
-            Debug.Log($"Dealt {damage.Damage} damage!");
+            Debug.LogWarning("Dealdamage has no targets!");
+            yield break;
+        }
+        foreach (var target in damage.Targets)
+        {
+            if (target == null)
+            {
+                Debug.LogWarning("Null target in damage list — skipping");
+                continue;
+            }
+            target.takedamage(damage);
+            Debug.Log($"Dealt {damage.Damage} damage to {target.name}");
         }
         yield break;
 

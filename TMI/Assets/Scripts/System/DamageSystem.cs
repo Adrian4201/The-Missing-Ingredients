@@ -19,7 +19,7 @@ public class DamageSystem : MonoBehaviour
     {
         foreach (var target in dealdamagega.Targets)
         {
-            target.Damage(dealdamagega.Damage);
+           target.takedamage(dealdamagega);
             yield return new WaitForSeconds(0.5f);
         }
     }

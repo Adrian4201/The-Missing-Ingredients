@@ -143,16 +143,52 @@ public class CardSystem : Singleton<CardSystem>
             turnSystem.SetPlayedCard(playCard.card, cardview);  // Ensure cardview is set
             turnSystem.NotifyCardPlayed();  // This just sets playedcard to true
         }
+        if (playCard.card.Damage > 0)
+        {
+            Enemyview currentEnemy = EnemySystem.Instance.GetCurrentEnemy();
+            if (currentEnemy != null)
+            {
+                HealthTracker enemyHealth = EnemySystem.Instance.GetComponent<HealthTracker>();
+
+
+
+                if (enemyHealth != null)
+                {
+                    Dealdamage damageAction = new Dealdamage(playCard.card.Damage, new List<HealthTracker> { enemyHealth });
+                    ActionSystem.Instance.AddAction(damageAction);
+                }
+                else
+                {
+                    Debug.LogWarning("No enemy target found for damage!");
+                }
+            }
+        }
 
         // Do NOT call yield return dicardCard(cardview); here
         yield break;  // Exit early
     }
     public IEnumerator Dealdamageperformer(Dealdamage damage)
     {
-        if (damage.Target != null)
+        if( damage == null)
         {
-            damage.Target.takedamage(damage);
-            Debug.Log($"Dealt {damage.Damage} damage!");
+            Debug.LogError("Deal damage is Null!");
+        }
+
+        if(damage.Targets == null || damage.Targets.Count == 0)
+        {
+            Debug.LogWarning("Dealdamage has no targets!");
+            yield break;
+        }
+        foreach (var target in damage.Targets)
+        {
+            if (target == null)
+            {
+                Debug.LogWarning("Null target in damage list — skipping");
+                continue;
+            }
+
+            target.takedamage(damage);
+            Debug.Log($"Dealt {damage.Damage} damage to {target.name}");
         }
         yield break;
 
